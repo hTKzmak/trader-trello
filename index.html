@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="board">
+        <li class="column">
+            <div class="column-header">To Do</div>
+            <ul class="card-list">
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+                <li class="card">Task 1</li>
+                <li class="card">Task 2</li>
+                <li class="card">Task 3</li>
+            </ul>
+            <div class="column-footer">Добавить карточку</div>
+        </li>
+        <li class="column">
+            <div class="column-header">In Progress</div>
+            <ul class="card-list">
+                <li class="card">Task 4</li>
+                <li class="card">Task 5</li>
+            </ul>
+            <div class="column-footer">Добавить карточку</div>
+        </li>
+        <li class="column">
+            <div class="column-header">Done</div>
+            <ul class="card-list">
+                <li class="card">Task 6</li>
+                <li class="card">Task 7</li>
+                <li class="card">Task 7</li>
+                <li class="card">Task 7</li>
+                <li class="card">Task 7</li>
+                <li class="card">Task 7</li>
+            </ul>
+            <div class="column-footer">Добавить карточку</div>
+        </li>
+        <li class="column">
+            <div class="column-header">Nothing</div>
+            <ul class="card-list"></ul>
+            <div class="column-footer">Добавить карточку</div>
+        </li>
+
+        <div class="add_column">
+            <span>Добавить колонку</span>
+
+            <form style="display: none;">
+                <input type="text" id="add_column_value" placeholder="Введите название">
+                <div class="form-options">
+                    <button id="submit" type="submit">Добавить</button>
+                    <i class="cancel"><img src="./icons/close.svg" alt="#"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./scripts/main.js"></script>
+</body>
+
+</html>
