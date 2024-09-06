@@ -33,59 +33,65 @@ $main-color: #36a4a4;
     // позволяет делать скролл к выбранному элементу
     scroll-snap-type: x mandatory;
 
-    // колонки
-    .column {
-        border-radius: 3px;
+    // список колонок
+    .columns-list{
         display: flex;
-        flex-direction: column;
-        min-width: 300px;
-        max-width: 300px;
-
-        // позволяет делать скролл к определённой колонке
-        scroll-snap-align: start;
-
-        // их header
-        .column-header {
-            padding: 10px;
-            background-color: $main-color;
-            color: white;
-            font-weight: bold;
-            border-radius: 3px 3px 0 0;
-        }
-
-        // список карточек
-        .card-list {
-            overflow-y: auto;
-            padding: 10px;
-            background-color: #ebecf0;
-            list-style-type: none;
+        gap: 10px;
+        
+        // колонки
+        .column {
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            min-width: 300px;
+            max-width: 300px;
     
-            // карточки
-            .card {
-                background-color: white;
-                border-radius: 3px;
+            // позволяет делать скролл к определённой колонке
+            scroll-snap-align: start;
+    
+            // их header
+            .column-header {
                 padding: 10px;
-                margin-bottom: 8px;
-                box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+                background-color: $main-color;
+                color: white;
+                font-weight: bold;
+                border-radius: 3px 3px 0 0;
+            }
     
-                &:hover {
-                    background-color: #f4f5f7;
+            // список карточек
+            .card-list {
+                overflow-y: auto;
+                padding: 10px;
+                background-color: #ebecf0;
+                list-style-type: none;
+        
+                // карточки
+                .card {
+                    background-color: white;
+                    border-radius: 3px;
+                    padding: 10px;
+                    margin-bottom: 8px;
+                    box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+        
+                    &:hover {
+                        background-color: #f4f5f7;
+                    }
                 }
             }
-        }
-    
-        // футер колонок
-        .column-footer {
-            @include buttonFormStyle(0, 0, 3px, 3px);
-    
-            &:hover {
-                background-color: #c4c9d1;
-            }
-        }
         
-        // если экран будет меньше 400px, то колонки будут на весь экран
-        @media screen and (max-width: 400px) {
-            min-width: 89vw;
+            // футер колонок
+            .column-footer {
+                @include buttonFormStyle(0, 0, 3px, 3px);
+        
+                &:hover {
+                    background-color: #c4c9d1;
+                }
+            }
+            
+            // если экран будет меньше 400px, то колонки будут на весь экран
+            @media screen and (max-width: 400px) {
+                min-width: 89vw;
+            }
         }
     }
 

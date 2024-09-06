@@ -6,68 +6,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://raw.githack.com/SortableJS/Sortable/master/Sortable.js"></script>
 </head>
 
 <body>
     <div class="board">
-        <li class="column">
-            <div class="column-header">To Do</div>
-            <ul class="card-list">
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-                <li class="card">Task 1</li>
-                <li class="card">Task 2</li>
-                <li class="card">Task 3</li>
-            </ul>
-            <div class="column-footer">Добавить карточку</div>
-        </li>
-        <li class="column">
-            <div class="column-header">In Progress</div>
-            <ul class="card-list">
-                <li class="card">Task 4</li>
-                <li class="card">Task 5</li>
-            </ul>
-            <div class="column-footer">Добавить карточку</div>
-        </li>
-        <li class="column">
-            <div class="column-header">Done</div>
-            <ul class="card-list">
-                <li class="card">Task 6</li>
-                <li class="card">Task 7</li>
-                <li class="card">Task 7</li>
-                <li class="card">Task 7</li>
-                <li class="card">Task 7</li>
-                <li class="card">Task 7</li>
-            </ul>
-            <div class="column-footer">Добавить карточку</div>
-        </li>
-        <li class="column">
-            <div class="column-header">Nothing</div>
-            <ul class="card-list"></ul>
-            <div class="column-footer">Добавить карточку</div>
-        </li>
+        <ul class="columns-list">
+            <li class="column">
+                <div class="column-header">To Do</div>
+                <ul class="card-list">
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                    <li class="card">Task 1</li>
+                    <li class="card">Task 2</li>
+                    <li class="card">Task 3</li>
+                </ul>
+                <div class="column-footer">Добавить карточку</div>
+            </li>
+            <li class="column">
+                <div class="column-header">In Progress</div>
+                <ul class="card-list">
+                    <li class="card">Task 4</li>
+                    <li class="card">Task 5</li>
+                </ul>
+                <div class="column-footer">Добавить карточку</div>
+            </li>
+            <li class="column">
+                <div class="column-header">Done</div>
+                <ul class="card-list">
+                    <li class="card">Task 6</li>
+                    <li class="card">Task 7</li>
+                    <li class="card">Task 7</li>
+                    <li class="card">Task 7</li>
+                    <li class="card">Task 7</li>
+                    <li class="card">Task 7</li>
+                </ul>
+                <div class="column-footer">Добавить карточку</div>
+            </li>
+            <li class="column">
+                <div class="column-header">Nothing</div>
+                <ul class="card-list"></ul>
+                <div class="column-footer">Добавить карточку</div>
+            </li>
+        </ul>
 
         <div class="add_column">
             <span>Добавить колонку</span>
@@ -83,6 +86,7 @@
     </div>
 
     <script src="./scripts/main.js"></script>
+    <script src="./scripts/dragAndDrop.js"></script>
 </body>
 
 </html>

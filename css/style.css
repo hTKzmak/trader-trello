@@ -18,7 +18,11 @@ body {
   height: 95vh;
   scroll-snap-type: x mandatory;
 }
-.board .column {
+.board .columns-list {
+  display: flex;
+  gap: 10px;
+}
+.board .columns-list .column {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -26,30 +30,30 @@ body {
   max-width: 300px;
   scroll-snap-align: start;
 }
-.board .column .column-header {
+.board .columns-list .column .column-header {
   padding: 10px;
   background-color: #36a4a4;
   color: white;
   font-weight: bold;
   border-radius: 3px 3px 0 0;
 }
-.board .column .card-list {
+.board .columns-list .column .card-list {
   overflow-y: auto;
   padding: 10px;
   background-color: #ebecf0;
   list-style-type: none;
 }
-.board .column .card-list .card {
+.board .columns-list .column .card-list .card {
   background-color: white;
   border-radius: 3px;
   padding: 10px;
   margin-bottom: 8px;
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
 }
-.board .column .card-list .card:hover {
+.board .columns-list .column .card-list .card:hover {
   background-color: #f4f5f7;
 }
-.board .column .column-footer {
+.board .columns-list .column .column-footer {
   padding: 10px;
   background-color: #dfe1e6;
   color: #5e6c84;
@@ -57,11 +61,11 @@ body {
   border-radius: 0 0 3px 3px;
   cursor: pointer;
 }
-.board .column .column-footer:hover {
+.board .columns-list .column .column-footer:hover {
   background-color: #c4c9d1;
 }
 @media screen and (max-width: 400px) {
-  .board .column {
+  .board .columns-list .column {
     min-width: 89vw;
   }
 }
