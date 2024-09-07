@@ -85,6 +85,23 @@ columnForm.addEventListener('submit', (e) => {
 });
 
 
+// Элементы для колонок и карточек
+
+// создание кнопки для колонки и карточки
+function createMenuButton(){
+    const menuButton = document.createElement('button');
+    menuButton.className = 'menu-button';
+    menuButton.innerHTML = `
+        <div class="menu-icon">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+    `;
+    return menuButton;
+}
+
+
 // Создание колонки:
 
 // Функция для создания колонки
@@ -110,7 +127,17 @@ function createColumnHeader(columnData) {
     const columnHeader = document.createElement('div');
     columnHeader.className = 'column-header';
 
-    columnHeader.innerHTML = columnData.value;
+    const columnName = document.createElement('span');
+    columnName.innerHTML = columnData.value;
+
+    const menuButton = createMenuButton();
+
+    menuButton.addEventListener('click', () => {
+        alert(`column ${columnData.id}`)
+    })
+
+    columnHeader.appendChild(columnName)
+    columnHeader.appendChild(menuButton)
 
     return columnHeader;
 }
@@ -191,7 +218,7 @@ function addCardItemToColumn(columnData, input) {
 // Функция создание карточки
 function addingCard(cardDataId, value, color, columnData) {
     let cardsList = document.getElementById(columnData.id).childNodes[1]
-    
+
     let columnForm = document.getElementById(columnData.id).childNodes[2].childNodes[3]
     let columnSpan = document.getElementById(columnData.id).childNodes[2].childNodes[1]
 
@@ -199,17 +226,38 @@ function addingCard(cardDataId, value, color, columnData) {
     cardItem.className = 'card';
     cardItem.id = cardDataId;
     cardItem.style.background = color;
-    cardItem.style.borderColor = color == '#ffffff' ? '#36a4a4' : color;
 
     const cardItemName = document.createElement('span');
     cardItemName.innerHTML = value;
 
+    const menuButton = createMenuButton();
+
+    menuButton.addEventListener('click', () => {
+        alert(`card ${cardDataId}`)
+    })
+
     cardItem.appendChild(cardItemName);
+    cardItem.appendChild(menuButton);
 
     if (value) {
         cardsList.appendChild(cardItem);
         cardsList.scrollTop = cardsList.scrollHeight;
         hideForm(columnForm, columnSpan, value)
+
+        // Функционал Drag and Drop с библиотекой SortableJS для карточек
+        const cardsListEl = document.querySelectorAll('.card-list');
+
+        cardsListEl.forEach(elem => {
+            Sortable.create(elem, {
+                group: 'selected',
+                animation: 100,
+                delay: window.innerWidth <= 900 ? 50 : 0,
+
+                onChange: function () {
+                    console.log('Данные карточек обновились');
+                },
+            });
+        });
     }
 }
 

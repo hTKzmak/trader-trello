@@ -36,6 +36,25 @@ body {
   color: white;
   font-weight: bold;
   border-radius: 3px 3px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.board .columns-list .column .column-header .menu-button {
+  background-color: transparent;
+  border: none;
+  height: 25px;
+  cursor: pointer;
+}
+.board .columns-list .column .column-header .menu-button .menu-icon {
+  display: flex;
+  gap: 4px;
+}
+.board .columns-list .column .column-header .menu-button .menu-icon .circle {
+  width: 5px;
+  height: 5px;
+  background-color: #fff;
+  border-radius: 100px;
 }
 .board .columns-list .column .card-list {
   overflow-y: auto;
@@ -44,11 +63,40 @@ body {
   list-style-type: none;
 }
 .board .columns-list .column .card-list .card {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
   border-radius: 3px;
   padding: 10px;
   margin-bottom: 8px;
   box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  word-wrap: anywhere;
+  word-break: break-all;
+}
+.board .columns-list .column .card-list .card .menu-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 3px 5px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  display: block;
+  background-color: #fcfcfc;
+}
+.board .columns-list .column .card-list .card .menu-button .menu-icon {
+  display: flex;
+  gap: 4px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.board .columns-list .column .card-list .card .menu-button .menu-icon .circle {
+  width: 4px;
+  height: 4px;
+  background-color: #36a4a4;
+  border-radius: 100px;
 }
 .board .columns-list .column .card-list .card:hover {
   background-color: #f4f5f7;

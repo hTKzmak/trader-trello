@@ -34,10 +34,10 @@ $main-color: #36a4a4;
     scroll-snap-type: x mandatory;
 
     // список колонок
-    .columns-list{
+    .columns-list {
         display: flex;
         gap: 10px;
-        
+
         // колонки
         .column {
             border-radius: 3px;
@@ -45,10 +45,10 @@ $main-color: #36a4a4;
             flex-direction: column;
             min-width: 300px;
             max-width: 300px;
-    
+
             // позволяет делать скролл к определённой колонке
             scroll-snap-align: start;
-    
+
             // их header
             .column-header {
                 padding: 10px;
@@ -56,38 +56,101 @@ $main-color: #36a4a4;
                 color: white;
                 font-weight: bold;
                 border-radius: 3px 3px 0 0;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .menu-button {
+                    background-color: transparent;
+                    border: none;
+                    height: 25px;
+
+                    cursor: pointer;
+
+                    .menu-icon {
+                        display: flex;
+                        gap: 4px;
+
+                        .circle {
+                            width: 5px;
+                            height: 5px;
+                            background-color: #fff;
+                            border-radius: 100px;
+                        }
+                    }
+                }
             }
-    
+
             // список карточек
             .card-list {
                 overflow-y: auto;
                 padding: 10px;
                 background-color: #ebecf0;
                 list-style-type: none;
-        
+
                 // карточки
                 .card {
+                    position: relative;
+
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
                     background-color: white;
                     border-radius: 3px;
                     padding: 10px;
                     margin-bottom: 8px;
                     box-shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
-        
+
+                    // отступы у названий карточек
+                    word-wrap: anywhere;
+                    word-break: break-all;
+
+                    .menu-button {
+                        position: absolute;
+                        top: 5px;
+                        right: 5px;
+
+                        padding: 3px 5px;
+                        border-radius: 100px;
+                        border: none;
+
+                        cursor: pointer;
+                        display: block;
+
+                        background-color: #fcfcfc;
+
+                        .menu-icon {
+                            display: flex;
+                            gap: 4px;
+                            padding-top: 10px;
+                            padding-bottom: 10px;
+
+                            .circle {
+                                width: 4px;
+                                height: 4px;
+                                background-color: $main-color;
+                                border-radius: 100px;
+                            }
+                        }
+                    }
+
                     &:hover {
                         background-color: #f4f5f7;
                     }
                 }
             }
-        
+
             // футер колонок
             .column-footer {
                 @include buttonFormStyle(0, 0, 3px, 3px);
-        
+
                 &:hover {
                     background-color: #c4c9d1;
                 }
             }
-            
+
             // если экран будет меньше 400px, то колонки будут на весь экран
             @media screen and (max-width: 400px) {
                 min-width: 89vw;
@@ -115,7 +178,6 @@ $main-color: #36a4a4;
         }
     }
 }
-
 
 // стилизация для формы заполнения названия карточки или колонки
 form {
