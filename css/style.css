@@ -115,6 +115,8 @@ body {
 @media screen and (max-width: 400px) {
   .board .columns-list .column {
     min-width: 89vw;
+    height: -moz-fit-content;
+    height: fit-content;
   }
 }
 .board .add_column {

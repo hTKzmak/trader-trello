@@ -29,7 +29,6 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     // Функционал отображения и исчезновения окна
     document.addEventListener('touchstart', (evt) => {
         const touch = evt.touches[0];
-        console.log(touch.target)
 
         if (!buttonEl.contains(touch.target)) {
             hideForm(formEl, spanEl, inputEl);
@@ -41,6 +40,21 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
             hideForm(formEl, spanEl, inputEl);
         }
     })
+}
+
+// Функционал Drag and Drop с библиотекой SortableJS для карточек
+function sortableLists(listOfElem, message) {
+    listOfElem.forEach(elem => {
+        Sortable.create(elem, {
+            group: 'selected',
+            animation: 100,
+            delay: window.innerWidth <= 900 ? 50 : 0,
+
+            onChange: function () {
+                console.log(`${message}`);
+            },
+        });
+    });
 }
 
 // Событие для отображения и исчезновения формы заполнения (для колонок)
@@ -80,7 +94,18 @@ columnForm.addEventListener('submit', (e) => {
 
         // скрываем формы заполнения
         hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
+
+
+        // Функционал Drag and Drop с библиотекой SortableJS для карточек
+        const cardsListEl = document.querySelectorAll('.card-list');
+        sortableLists(cardsListEl, 'Данные карточек обновились');
     }
+
+    // скролл к созданной колонке:
+    // Находим последнюю колонку
+    const lastColumn = document.querySelector('.columns-list').lastChild;
+    // Прокручиваем к последней колонке
+    lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
 });
 
@@ -88,7 +113,7 @@ columnForm.addEventListener('submit', (e) => {
 // Элементы для колонок и карточек
 
 // создание кнопки для колонки и карточки
-function createMenuButton(){
+function createMenuButton() {
     const menuButton = document.createElement('button');
     menuButton.className = 'menu-button';
     menuButton.innerHTML = `
@@ -246,18 +271,7 @@ function addingCard(cardDataId, value, color, columnData) {
 
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
-
-        cardsListEl.forEach(elem => {
-            Sortable.create(elem, {
-                group: 'selected',
-                animation: 100,
-                delay: window.innerWidth <= 900 ? 50 : 0,
-
-                onChange: function () {
-                    console.log('Данные карточек обновились');
-                },
-            });
-        });
+        sortableLists(cardsListEl, 'Данные карточек обновились');
     }
 }
 
