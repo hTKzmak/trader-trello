@@ -18,23 +18,11 @@ Sortable.create(columnsListElement, {
     // вызов функции в начале перемещения колонок
     onStart: function () {
         console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
-
-        columnElements.forEach(elem => {
-            elem.style.scrollSnapAlign = 'none';
-        })
-
-        document.querySelector('.add_column').style.scrollSnapAlign = 'none';
     },
 
     // Element dragging ended
     onEnd: function () {
         console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
-
-        columnElements.forEach(elem => {
-            elem.style.scrollSnapAlign = 'start';
-        })
-
-        document.querySelector('.add_column').style.scrollSnapAlign = 'start';
     },
 
     // вызов функции при изменении положений колонок

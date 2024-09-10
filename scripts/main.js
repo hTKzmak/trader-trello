@@ -1,3 +1,5 @@
+// Main.js является файлом с основным функционалом
+
 // Находим элементы на странице
 const addColumnButton = document.querySelector('.add_column');
 const columnForm = addColumnButton.querySelector('form');
@@ -44,10 +46,6 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
 
 // Функционал Drag and Drop с библиотекой SortableJS для карточек
 function sortableLists(listOfElem, message) {
-
-    // сам элемент задачи 
-    const columnElements = columnsListElement.querySelectorAll(`.column`);
-
     listOfElem.forEach(elem => {
         Sortable.create(elem, {
             group: 'selected',
@@ -57,23 +55,11 @@ function sortableLists(listOfElem, message) {
             // вызов функции в начале перемещения колонок
             onStart: function () {
                 console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
-
-                columnElements.forEach(elem => {
-                    elem.style.scrollSnapAlign = 'none';
-                })
-
-                document.querySelector('.add_column').style.scrollSnapAlign = 'none';
             },
 
             // Element dragging ended
             onEnd: function () {
                 console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
-
-                columnElements.forEach(elem => {
-                    elem.style.scrollSnapAlign = 'start';
-                })
-
-                document.querySelector('.add_column').style.scrollSnapAlign = 'start';
             },
 
             onChange: function () {
@@ -174,7 +160,7 @@ function createColumnItem(columnData) {
 }
 
 // Функция для создания заголовка колонки
-function createColumnHeader(columnData) {
+function createColumnHeader(columnData, columnItem) {
     const columnHeader = document.createElement('div');
     columnHeader.className = 'column-header';
 
@@ -184,7 +170,7 @@ function createColumnHeader(columnData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        alert(`column ${columnData.id}`)
+        createMenuWindow(columnItem, 'column')
     })
 
     columnHeader.appendChild(columnName)
@@ -284,7 +270,7 @@ function addingCard(cardDataId, value, color, columnData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        alert(`card ${cardDataId}`)
+        createMenuWindow('card')
     })
 
     cardItem.appendChild(cardItemName);

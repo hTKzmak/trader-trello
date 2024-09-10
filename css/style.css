@@ -23,6 +23,7 @@ body {
   gap: 10px;
 }
 .board .columns-list .column {
+  position: relative;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
@@ -181,4 +182,16 @@ form .form-options #submit {
   width: fit-content;
   font-size: 14px;
   cursor: pointer;
+}
+
+.menu-window {
+  position: absolute;
+  top: 15px;
+  right: -65%;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #dfe1e6;
+  border-radius: 3px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 }/*# sourceMappingURL=style.css.map */
