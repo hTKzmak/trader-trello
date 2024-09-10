@@ -44,11 +44,37 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
 
 // Функционал Drag and Drop с библиотекой SortableJS для карточек
 function sortableLists(listOfElem, message) {
+
+    // сам элемент задачи 
+    const columnElements = columnsListElement.querySelectorAll(`.column`);
+
     listOfElem.forEach(elem => {
         Sortable.create(elem, {
             group: 'selected',
             animation: 100,
             delay: window.innerWidth <= 900 ? 50 : 0,
+
+            // вызов функции в начале перемещения колонок
+            onStart: function () {
+                console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
+
+                columnElements.forEach(elem => {
+                    elem.style.scrollSnapAlign = 'none';
+                })
+
+                document.querySelector('.add_column').style.scrollSnapAlign = 'none';
+            },
+
+            // Element dragging ended
+            onEnd: function () {
+                console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
+
+                columnElements.forEach(elem => {
+                    elem.style.scrollSnapAlign = 'start';
+                })
+
+                document.querySelector('.add_column').style.scrollSnapAlign = 'start';
+            },
 
             onChange: function () {
                 console.log(`${message}`);
