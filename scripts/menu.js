@@ -1,6 +1,6 @@
 // menu.js - файл с работой меню карточек и колонок
 
-function createMenuWindow(item, type) {
+function createMenuWindow(item, type, button) {
     const menuWindow = document.createElement('div');
     menuWindow.className = 'menu-window';
 
@@ -12,18 +12,19 @@ function createMenuWindow(item, type) {
         otherMenu.remove()
     });
 
-    if (type == 'column') {
-        menuWindow.style.left = '65%'
-        item.appendChild(menuWindow)
-    }
-    else if(type == 'card'){
-        item.appendChild(menuWindow)
-    }
-
+    // если нажатие произошло вне menuWindow и вне button, да и если мы не нажали на саму кнопку, то окно исчезает (удаляется)
     document.addEventListener('click', (evt) => {
-        if (!menuWindow.contains(evt)) {
+        if (!menuWindow.contains(evt.target) && !button.contains(evt.target) && evt.target.className != 'menu-button') {
             menuWindow.remove();
         }
     })
+
+    if (type == 'column') {
+        menuWindow.style.left = window.innerWidth > 400 ? '65%' : '13%';
+        item.appendChild(menuWindow)
+    }
+    else if (type == 'card') {
+        item.appendChild(menuWindow)
+    }
 
 }
