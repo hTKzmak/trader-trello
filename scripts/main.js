@@ -270,7 +270,7 @@ function addingCard(cardDataId, value, color, columnData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        createMenuWindow('card')
+        createMenuWindow(cardItem, 'card')
     })
 
     cardItem.appendChild(cardItemName);

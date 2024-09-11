@@ -6,24 +6,24 @@ function createMenuWindow(item, type) {
 
     menuWindow.innerHTML = 'Менюшка ＼(≧▽≦)／'
 
-    // // Закрытие других открытых меню
-    // document.querySelectorAll(".menu-window").forEach(otherMenu => {
-    //     if (otherMenu !== menuWindow) {
-    //         otherMenu.remove();
-    //     }
-    // });
+    // Закрытие других открытых меню
+    // работает это странным образом: он не удаляет последнюю созданное меню
+    document.querySelectorAll(".menu-window").forEach(otherMenu => {
+        otherMenu.remove()
+    });
 
     if (type == 'column') {
+        menuWindow.style.left = '65%'
         item.appendChild(menuWindow)
     }
-    else if (type == 'card') {
-        document.body.appendChild(menuWindow)
+    else if(type == 'card'){
+        item.appendChild(menuWindow)
     }
 
-    // Закрытие меню при клике вне его
-    // document.addEventListener("click", (event) => {
-    //     if (!event.target.closest(".menu-window")) {
-    //         menuWindow.remove();
-    //     }
-    // });
+    document.addEventListener('click', (evt) => {
+        if (!menuWindow.contains(evt)) {
+            menuWindow.remove();
+        }
+    })
+
 }
