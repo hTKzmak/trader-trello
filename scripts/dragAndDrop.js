@@ -17,17 +17,17 @@ function activateSort() {
         // вызов функции в начале перемещения колонок
         onStart: function () {
             console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
-
+            
+            // убираем выбор выбранного элемента
             document.querySelector('.board').style.scrollSnapType = 'unset';
-            // scroll-snap-type: unset;
         },
 
         // Element dragging ended
         onEnd: function () {
             console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
-
+            
+            // убираем выбор выбранного элемента
             document.querySelector('.board').style.scrollSnapType = 'x mandatory';
-            // scroll-snap-type: unset;
         },
 
         // вызов функции при изменении положений колонок

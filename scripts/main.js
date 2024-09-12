@@ -55,11 +55,17 @@ function sortableLists(listOfElem, message) {
             // вызов функции в начале перемещения колонок
             onStart: function () {
                 console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
+                
+                // убираем выбор выбранного элемента
+                document.querySelector('.board').style.scrollSnapType = 'unset';
             },
 
             // Element dragging ended
             onEnd: function () {
                 console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
+                
+                // убираем выбор выбранного элемента
+                document.querySelector('.board').style.scrollSnapType = 'x mandatory';
             },
 
             onChange: function () {
