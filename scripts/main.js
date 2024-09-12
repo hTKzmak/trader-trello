@@ -143,35 +143,35 @@ function createMenuButton() {
 // Создание колонки:
 
 // Функция для создания колонки
-function createColumnItem(columnData) {
+function createColumnItem(columnItemData) {
     const columnItem = document.createElement('li');
     columnItem.className = 'column';
-    columnItem.id = columnData.id;
+    columnItem.id = columnItemData.id;
 
-    const columnHeader = createColumnHeader(columnData, columnItem);
+    const columnHeader = createColumnHeader(columnItemData, columnItem);
     columnItem.appendChild(columnHeader);
 
-    const cardsList = createColumnCardsList(columnData);
+    const cardsList = createColumnCardsList(columnItemData);
     columnItem.appendChild(cardsList);
 
-    const columnFooter = createColumnFooter(columnData);
+    const columnFooter = createColumnFooter(columnItemData);
     columnItem.appendChild(columnFooter);
 
     return columnItem;
 }
 
 // Функция для создания заголовка колонки
-function createColumnHeader(columnData, columnItem) {
+function createColumnHeader(columnItemData, columnItem) {
     const columnHeader = document.createElement('div');
     columnHeader.className = 'column-header';
 
     const columnName = document.createElement('span');
-    columnName.innerHTML = columnData.value;
+    columnName.innerHTML = columnItemData.value;
 
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        createMenuWindow(columnItem, 'column', menuButton)
+        createMenuWindow(columnItem, columnItemData, 'column', menuButton)
     })
 
     columnHeader.appendChild(columnName)
@@ -190,7 +190,7 @@ function createColumnCardsList() {
 }
 
 // Функция для создания футера колонки
-function createColumnFooter(columnData) {
+function createColumnFooter(columnItemData) {
     const columnFooter = document.createElement('div');
     columnFooter.className = 'column-footer';
     columnFooter.innerHTML = `
@@ -224,7 +224,7 @@ function createColumnFooter(columnData) {
     // добавление карточки в колонку
     columnFooterForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        addCardItemToColumn(columnData, columnFooterInput)
+        addCardItemToColumn(columnItemData, columnFooterInput)
     })
 
     return columnFooter;
@@ -234,8 +234,8 @@ function createColumnFooter(columnData) {
 // Добавление карточки для опередлённой колонки
 
 // Функция для добавления карточки
-// columnData.id (находим по id список), columnFooterInput, columnData
-function addCardItemToColumn(columnData, input) {
+// columnItemData.id (находим по id список), columnFooterInput, columnItemData
+function addCardItemToColumn(columnItemData, input) {
     const cardData = {
         id: Date.now(),
         data: new Date().toISOString().replace('T', ' ').split('.')[0],
@@ -245,20 +245,20 @@ function addCardItemToColumn(columnData, input) {
     };
 
     if (input.value) {
-        addingCard(cardData.id, cardData.value, cardData.color, columnData);
-        columnData.cards.push(cardData);
-        console.log(columnData)
+        addingCard(cardData.id, cardData.value, cardData.color, columnItemData);
+        columnItemData.cards.push(cardData);
+        console.log(columnItemData)
     }
 
     input.value = '';
 }
 
 // Функция создание карточки
-function addingCard(cardDataId, value, color, columnData) {
-    let cardsList = document.getElementById(columnData.id).childNodes[1]
+function addingCard(cardDataId, value, color, columnItemData) {
+    let cardsList = document.getElementById(columnItemData.id).childNodes[1]
 
-    let columnForm = document.getElementById(columnData.id).childNodes[2].childNodes[3]
-    let columnSpan = document.getElementById(columnData.id).childNodes[2].childNodes[1]
+    let columnForm = document.getElementById(columnItemData.id).childNodes[2].childNodes[3]
+    let columnSpan = document.getElementById(columnItemData.id).childNodes[2].childNodes[1]
 
     const cardItem = document.createElement('li');
     cardItem.className = 'card';
@@ -271,7 +271,7 @@ function addingCard(cardDataId, value, color, columnData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        createMenuWindow(cardItem, 'card', menuButton)
+        createMenuWindow(cardItem, columnItemData, 'card', menuButton)
     })
 
     cardItem.appendChild(cardItemName);

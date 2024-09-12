@@ -19,7 +19,7 @@ Sortable.create(columnsListElement, {
     onStart: function () {
         console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
     },
-
+    
     // Element dragging ended
     onEnd: function () {
         console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')

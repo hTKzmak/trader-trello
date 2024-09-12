@@ -7,18 +7,23 @@
 
 body {
   background-color: #f4f5f7;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
+}
+@media screen and (max-width: 450px) {
+  body {
+    padding: 20px;
+  }
 }
 
 .board {
   display: flex;
-  gap: 30px;
+  gap: 10px;
   overflow-x: auto;
   padding-bottom: 10px;
   height: 95vh;
   padding-left: 20px;
   padding-right: 20px;
+  scroll-snap-type: x mandatory;
 }
 .board .columns-list {
   display: flex;
@@ -31,6 +36,9 @@ body {
   flex-direction: column;
   min-width: 300px;
   max-width: 300px;
+  scroll-snap-align: start;
+  word-wrap: anywhere;
+  word-break: break-all;
 }
 .board .columns-list .column .column-header {
   padding: 10px;
@@ -41,6 +49,15 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.board .columns-list .column .column-header input {
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  width: 100%;
+  height: 35px;
+  font-size: 16px;
+  text-indent: 0.5rem;
 }
 .board .columns-list .column .column-header .menu-button {
   background-color: transparent;
@@ -132,6 +149,7 @@ body {
   min-width: 300px;
   height: -moz-fit-content;
   height: fit-content;
+  scroll-snap-align: start;
 }
 .board .add_column:hover {
   background-color: #c4c9d1;
@@ -151,7 +169,7 @@ form input {
   border: none;
   border-radius: 4px;
   outline: none;
-  width: initial;
+  width: inherit;
   height: 35px;
   font-size: 16px;
   text-indent: 0.5rem;
@@ -213,6 +231,7 @@ form .form-options #submit {
   border-radius: 3px;
   color: #6a6a6a;
   font-size: 12px;
+  cursor: pointer;
 }
 .menu-window .menu-button:hover {
   background: #f0f0f0;
