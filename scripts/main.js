@@ -111,6 +111,7 @@ columnForm.addEventListener('submit', (e) => {
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
         sortableLists(cardsListEl, 'Данные карточек обновились');
+
     }
 
     // скролл к созданной колонке:

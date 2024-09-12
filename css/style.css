@@ -7,16 +7,18 @@
 
 body {
   background-color: #f4f5f7;
-  padding: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .board {
   display: flex;
-  gap: 10px;
+  gap: 30px;
   overflow-x: auto;
   padding-bottom: 10px;
   height: 95vh;
-  scroll-snap-type: x mandatory;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 .board .columns-list {
   display: flex;
@@ -29,7 +31,6 @@ body {
   flex-direction: column;
   min-width: 300px;
   max-width: 300px;
-  scroll-snap-align: start;
 }
 .board .columns-list .column .column-header {
   padding: 10px;
@@ -113,7 +114,7 @@ body {
 .board .columns-list .column .column-footer:hover {
   background-color: #c4c9d1;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .board .columns-list .column {
     min-width: 89vw;
     height: -moz-fit-content;
@@ -131,12 +132,11 @@ body {
   min-width: 300px;
   height: -moz-fit-content;
   height: fit-content;
-  scroll-snap-align: start;
 }
 .board .add_column:hover {
   background-color: #c4c9d1;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 450px) {
   .board .add_column {
     min-width: 89vw;
   }
@@ -187,7 +187,7 @@ form .form-options #submit {
 .menu-window {
   position: absolute;
   top: 10px;
-  width: 300px;
+  width: 245px;
   padding: 10px 7px;
   display: flex;
   flex-direction: column;

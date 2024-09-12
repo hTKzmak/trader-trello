@@ -7,7 +7,8 @@
 
 body {
     background-color: #f4f5f7;
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 $main-color: #36a4a4;
@@ -25,13 +26,18 @@ $main-color: #36a4a4;
 // доска (контент колонок)
 .board {
     display: flex;
-    gap: 10px;
+    // gap: 10px;
+    gap: 30px;
+
     overflow-x: auto;
     padding-bottom: 10px;
     height: 95vh;
+    
+    padding-left: 20px;
+    padding-right: 20px;
 
     // позволяет делать скролл к выбранному элементу
-    scroll-snap-type: x mandatory;
+    // scroll-snap-type: x mandatory;
 
     // список колонок
     .columns-list {
@@ -49,7 +55,7 @@ $main-color: #36a4a4;
             max-width: 300px;
 
             // позволяет делать скролл к определённой колонке
-            scroll-snap-align: start;
+            // scroll-snap-align: start;
 
             // их header
             .column-header {
@@ -153,8 +159,8 @@ $main-color: #36a4a4;
                 }
             }
 
-            // если экран будет меньше 400px, то колонки будут на весь экран и высота колонок будет меньше
-            @media screen and (max-width: 400px) {
+            // если экран будет меньше 450px, то колонки будут на весь экран и высота колонок будет меньше
+            @media screen and (max-width: 450px) {
                 min-width: 89vw;
                 height: fit-content;
             }
@@ -170,13 +176,13 @@ $main-color: #36a4a4;
         height: fit-content;
 
         // позволяет делать скролл к этой кнопке
-        scroll-snap-align: start;
+        // scroll-snap-align: start;
 
         &:hover {
             background-color: #c4c9d1;
         }
 
-        @media screen and (max-width: 400px) {
+        @media screen and (max-width: 450px) {
             min-width: 89vw;
         }
     }
@@ -245,7 +251,7 @@ form {
     position: absolute;
     top: 10px;
 
-    width: 300px;
+    width: 245px;
 
     padding: 10px 7px;
 

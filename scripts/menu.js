@@ -5,9 +5,9 @@ function createMenuWindow(item, type, button) {
     menuWindow.className = 'menu-window';
 
     menuWindow.innerHTML = `
-        <button class="menu-button">Изменить (пока ещё не добавил)</button>
+        <button class="menu-button">Изменить</button>
         <button class="menu-button">Что-то для этого элемента</button>
-        <button class="menu-button" id="delete">Удалить (пока ещё не добавил)</button>
+        <button class="menu-button" id="delete">Удалить</button>
     `
 
     // Закрытие других открытых меню
@@ -20,13 +20,13 @@ function createMenuWindow(item, type, button) {
     checkingClickAndTouch(menuWindow, button);
 
     if (type == 'column') {
-        menuWindow.style.left = window.innerWidth > 400 ? '65%' : '8%';
+        menuWindow.style.left = window.innerWidth > 450 ? '65%' : '8%';
         item.appendChild(menuWindow)
     }
     else if (type == 'card') {
         document.addEventListener('click', (evt) => {
             menuWindow.style.top = (evt.pageY - 10) + 'px';
-            menuWindow.style.left = window.innerWidth > 400 ? (evt.pageX - 50) + 'px' : '13%';
+            menuWindow.style.left = window.innerWidth > 450 ? (evt.pageX - 50) + 'px' : '13%';
         }, { once: true })
         document.body.appendChild(menuWindow)
     }
