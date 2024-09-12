@@ -120,6 +120,7 @@ columnForm.addEventListener('submit', (e) => {
     // Прокручиваем к последней колонке
     lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
+    activateSort();
 });
 
 

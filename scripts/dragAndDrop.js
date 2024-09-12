@@ -1,34 +1,42 @@
-// список задач
-const columnsListElement = document.querySelector(`.columns-list`);
-
-// сам элемент задачи 
-const columnElements = columnsListElement.querySelectorAll(`.column`);
-
-
 // Фукционал Drag and Drop с библиотекой SortableJS для колонок
 // https://github.com/SortableJS/Sortable
 
-Sortable.create(columnsListElement, {
-    gropup: 'selected',
-    animation: 100, // скорость анимации
-    handle: '.column-header', // перетаскиваем колонку, удерживая выбранный нами элемент (в нашем случае это .column__header)
-    delay: window.innerWidth <= 900 ? 50 : 0, // время в миллисекундах, чтобы определить, когда должна начаться сортировка
-    filter: '#ignore',
+function activateSort() {
+    console.log('активация сорта')
 
-    // вызов функции в начале перемещения колонок
-    onStart: function () {
-        console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
-    },
-    
-    // Element dragging ended
-    onEnd: function () {
-        console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
-    },
+    // список задач
+    const columnsListElement = document.querySelector(`.columns-list`);
 
-    // вызов функции при изменении положений колонок
-    onChange: function () {
-        console.log('Данные колонок обновились')
-    },
+    Sortable.create(columnsListElement, {
+        gropup: 'selected',
+        animation: 100, // скорость анимации
+        handle: '.column-header', // перетаскиваем колонку, удерживая выбранный нами элемент (в нашем случае это .column__header)
+        delay: window.innerWidth <= 900 ? 50 : 0, // время в миллисекундах, чтобы определить, когда должна начаться сортировка
+        filter: '#ignore',
 
-});
+        // вызов функции в начале перемещения колонок
+        onStart: function () {
+            console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
 
+            document.querySelector('.board').style.scrollSnapType = 'unset';
+            // scroll-snap-type: unset;
+        },
+
+        // Element dragging ended
+        onEnd: function () {
+            console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КОЛОНОК')
+
+            document.querySelector('.board').style.scrollSnapType = 'x mandatory';
+            // scroll-snap-type: unset;
+        },
+
+        // вызов функции при изменении положений колонок
+        onChange: function () {
+            console.log('Данные колонок обновились')
+        },
+
+    });
+}
+
+// активируем его сразу же
+activateSort();
