@@ -44,43 +44,12 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     })
 }
 
-// Функционал Drag and Drop с библиотекой SortableJS для карточек
-function sortableLists(listOfElem, message) {
-    listOfElem.forEach(elem => {
-        Sortable.create(elem, {
-            group: 'selected',
-            animation: 100,
-            delay: window.innerWidth <= 900 ? 50 : 0,
-
-            // вызов функции в начале перемещения колонок
-            onStart: function () {
-                console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
-                
-                // убираем выбор выбранного элемента
-                document.querySelector('.board').style.scrollSnapType = 'unset';
-            },
-
-            // Element dragging ended
-            onEnd: function () {
-                console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
-                
-                // убираем выбор выбранного элемента
-                document.querySelector('.board').style.scrollSnapType = 'x mandatory';
-            },
-
-            onChange: function () {
-                console.log(`${message}`);
-            },
-        });
-    });
-}
-
 // Событие для отображения и исчезновения формы заполнения (для колонок)
 addColumnButton.addEventListener('click', (evt) => {
     const classes = ['form-options'];
     const ids = ['add_column_value', 'submit'];
 
-    if (!classes.includes(evt.target.className) && !ids.includes(evt.target.id) && evt.target.tagName !== 'SPAN') {
+    if (!classes.includes(evt.target.className) && !ids.includes(evt.target.id) && evt.target.tagName !== 'SPAN' && evt.target != addColumnButton) {
         hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
     }
     else {
@@ -116,7 +85,7 @@ columnForm.addEventListener('submit', (e) => {
 
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
-        sortableLists(cardsListEl, 'Данные карточек обновились');
+        sortableCards(cardsListEl, 'Данные карточек обновились');
 
     }
 
@@ -126,7 +95,7 @@ columnForm.addEventListener('submit', (e) => {
     // Прокручиваем к последней колонке
     lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    activateSort();
+    // activateSort();
 });
 
 
@@ -220,7 +189,7 @@ function createColumnFooter(columnItemData) {
         const classes = ['form-options'];
         const ids = ['add_card_value', 'submit'];
 
-        if (!classes.includes(evt.target.className) && !ids.includes(evt.target.id) && evt.target.tagName !== 'SPAN') {
+        if (!classes.includes(evt.target.className) && !ids.includes(evt.target.id) && evt.target.tagName !== 'SPAN' && evt.target != columnFooter) {
             hideForm(columnFooterForm, columnFooterSpan, columnFooterInput);
         }
         else {
@@ -291,7 +260,7 @@ function addingCard(cardDataId, value, color, columnItemData) {
 
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
-        sortableLists(cardsListEl, 'Данные карточек обновились');
+        sortableCards(cardsListEl, 'Данные карточек обновились');
     }
 }
 
