@@ -69,8 +69,8 @@ $main-color: #36a4a4;
             border-radius: 3px;
             display: flex;
             flex-direction: column;
-            min-width: 300px;
-            max-width: 300px;
+            min-width: 250px;
+            max-width: 250px;
 
             // позволяет делать скролл к определённой колонке
             scroll-snap-align: start;
@@ -184,11 +184,6 @@ $main-color: #36a4a4;
                 }
             }
 
-            // если экран будет меньше 450px, то колонки будут на весь экран и высота колонок будет меньше
-            @media screen and (max-width: 450px) {
-                min-width: 89vw;
-                height: fit-content;
-            }
         }
     }
 
@@ -196,8 +191,8 @@ $main-color: #36a4a4;
     .add_column {
         @include buttonFormStyle(3px, 3px, 3px, 3px);
 
-        width: 300px;
-        min-width: 300px;
+        width: 250px;
+        min-width: 250px;
         height: fit-content;
 
         // позволяет делать скролл к этой кнопке
@@ -205,10 +200,6 @@ $main-color: #36a4a4;
 
         &:hover {
             background-color: #c4c9d1;
-        }
-
-        @media screen and (max-width: 450px) {
-            min-width: 89vw;
         }
     }
 }
@@ -262,6 +253,7 @@ form {
     }
 }
 
+// стилизация для окна выбора действий/меню
 .menu-window {
     position: absolute;
     top: 10px;
@@ -306,6 +298,114 @@ form {
 
         &:hover {
             background: #f0f0f0;
+        }
+    }
+}
+
+// стилизация модального окна для карточек
+.modalWindow-container {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    display: flex;
+
+    height: 100vh;
+    width: 100vw;
+
+    background-color: #0000009b;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1;
+
+    .window {
+        position: relative;
+
+        background-color: #fff;
+        box-shadow: 0px 12px 15px 5px rgba(34, 60, 80, 0.2);
+        border-radius: 4px;
+
+        border: 1px solid $main-color;
+
+        width: 50%;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            background-color: $main-color;
+            padding: 5px 10px;
+
+            color: #fff;
+
+            button {
+                background: transparent;
+                border: none;
+                padding: 0;
+
+                cursor: pointer;
+
+                img {
+                    width: 30px;
+                }
+            }
+        }
+
+        .window-content {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            padding: 20px 15px 15px;
+
+            #empty {
+                border-color: red;
+                background-color: rgba(255, 0, 0, 0.2);
+                color: #495057;
+            }
+
+            .card-name {
+                @include inputStyle(100%);
+
+                transition: 0.3s;
+                background-color: rgb(186, 186, 186);
+            }
+
+            .options {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                gap: 15px;
+
+                button {
+                    text-transform: uppercase;
+                    font-size: 0.7rem;
+
+                    background-color: $main-color;
+                    color: #fff;
+                    box-shadow:
+                        0 2px 5px 0 rgba(0, 0, 0, 0.16),
+                        0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                    border: none;
+
+                    border-radius: 1em;
+
+                    padding: 0.7rem 1.6rem;
+
+                    cursor: pointer;
+                }
+
+                #delete_card {
+                    border: 1px solid #e72b3d;
+                    background-color: #dc3545;
+                }
+            }
         }
     }
 }
