@@ -22,11 +22,11 @@ function createMenuWindow(item, columnItemData, type, button) {
     });
     menuWindow.appendChild(changeButton)
 
-    if(type == 'column'){
+    if (type == 'column') {
 
     }
-    else if(type == 'card'){
-        const colorButton = addColorButton();
+    else if (type == 'card') {
+        const colorButton = addColorButton(menuWindow, columnItemData, item);
         menuWindow.appendChild(colorButton)
     }
 
@@ -55,6 +55,7 @@ function createMenuWindow(item, columnItemData, type, button) {
             menuWindow.style.top = (evt.pageY - 10) + 'px';
             menuWindow.style.left = window.innerWidth > 450 ? (evt.pageX - 50) + 'px' : '25%';
         }, { once: true })
+
         document.body.appendChild(menuWindow)
     }
 
@@ -107,10 +108,10 @@ function deleteElem(item, columnItemData, type) {
 function changeColumnName(item, columnName, columnButton, columnItemData) {
     const columnInput = document.createElement('input');
     columnInput.value = columnName.innerHTML;
-    
+
     document.getElementById(item.id).childNodes[0].appendChild(columnInput);
     columnInput.focus()
-    
+
     const saveNewName = () => {
         const newName = columnInput.value.trim();
 
@@ -127,7 +128,7 @@ function changeColumnName(item, columnName, columnButton, columnItemData) {
     };
 
     columnInput.addEventListener('keydown', (event) => {
-        if (event.code === 'Enter') {
+        if (event.code == 'Enter' || event.key == 'Enter') {
             saveNewName();
         }
     });

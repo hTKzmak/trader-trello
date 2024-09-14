@@ -92,8 +92,8 @@ columnForm.addEventListener('submit', (e) => {
     // скролл к созданной колонке:
     // Находим последнюю колонку
     const lastColumn = document.querySelector('.columns-list').lastChild;
-    
-    if(lastColumn){
+
+    if (lastColumn) {
         // Прокручиваем к последней колонке
         lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
@@ -149,6 +149,7 @@ function createColumnHeader(columnItemData, columnItem) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
+        columnItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         createMenuWindow(columnItem, columnItemData, 'column', menuButton)
     })
 
@@ -249,6 +250,7 @@ function addingCard(cardDataId, value, color, columnItemData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
+        cardItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         createMenuWindow(cardItem, columnItemData, 'card', menuButton)
     })
 

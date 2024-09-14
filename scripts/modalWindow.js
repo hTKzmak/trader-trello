@@ -22,7 +22,7 @@ function addWindowModal(cardItem, columnItemData) {
 
     setTimeout(() => {
         document.querySelector('.modalWindow-container').style.opacity = 1;
-    }, 300)
+    }, 350)
 }
 
 // добавление header для модалки
