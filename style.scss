@@ -14,7 +14,8 @@ body {
     overflow: hidden;
 
     @media screen and (max-width: 450px) {
-        padding: 20px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
 
@@ -207,6 +208,10 @@ $main-color: #36a4a4;
         &:hover {
             background-color: #c4c9d1;
         }
+    }
+
+    @media screen and (max-width: 450px) {
+        padding-bottom: 40px;
     }
 }
 

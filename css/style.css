@@ -14,7 +14,8 @@ body {
 }
 @media screen and (max-width: 450px) {
   body {
-    padding: 20px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 }
 
@@ -155,6 +156,11 @@ body {
 }
 .board .add_column:hover {
   background-color: #c4c9d1;
+}
+@media screen and (max-width: 450px) {
+  .board {
+    padding-bottom: 40px;
+  }
 }
 
 form {
