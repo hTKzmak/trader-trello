@@ -1,3 +1,4 @@
+@import "fontawesome/css/all.min.css";
 * {
   box-sizing: border-box;
   margin: 0;
@@ -36,9 +37,9 @@ body {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  min-width: 250px;
-  max-width: 250px;
-  scroll-snap-align: start;
+  min-width: 300px;
+  max-width: 300px;
+  scroll-snap-align: center;
   word-wrap: anywhere;
   word-break: break-all;
 }
@@ -133,6 +134,12 @@ body {
 .board .columns-list .column .column-footer:hover {
   background-color: #c4c9d1;
 }
+@media screen and (max-width: 450px) {
+  .board .columns-list .column {
+    max-width: 270px;
+    min-width: 270px;
+  }
+}
 .board .add_column {
   padding: 10px;
   background-color: #dfe1e6;
@@ -140,11 +147,11 @@ body {
   text-align: center;
   border-radius: 3px 3px 3px 3px;
   cursor: pointer;
-  width: 250px;
-  min-width: 250px;
+  width: 300px;
+  min-width: 300px;
   height: -moz-fit-content;
   height: fit-content;
-  scroll-snap-align: start;
+  scroll-snap-align: center;
 }
 .board .add_column:hover {
   background-color: #c4c9d1;
@@ -183,6 +190,7 @@ form .form-options .cancel img {
 }
 form .form-options #submit {
   background-color: white;
+  color: black;
   border: none;
   border-radius: 3px;
   padding: 7px 15px;
@@ -225,6 +233,11 @@ form .form-options #submit {
 }
 .menu-window .menu-button:hover {
   background: #f0f0f0;
+}
+@media screen and (max-width: 450px) {
+  .menu-window {
+    width: 200px;
+  }
 }
 
 .modalWindow-container {
@@ -286,7 +299,8 @@ form .form-options #submit {
   font-size: 16px;
   text-indent: 0.5rem;
   transition: 0.3s;
-  background-color: rgb(186, 186, 186);
+  background-color: white;
+  border: 2px solid #36a4a4;
 }
 .modalWindow-container .window .window-content .options {
   display: flex;
@@ -308,4 +322,9 @@ form .form-options #submit {
 .modalWindow-container .window .window-content .options #delete_card {
   border: 1px solid #e72b3d;
   background-color: #dc3545;
+}
+@media screen and (max-width: 1000px) {
+  .modalWindow-container .window {
+    width: 95%;
+  }
 }/*# sourceMappingURL=style.css.map */

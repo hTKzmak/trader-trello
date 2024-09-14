@@ -86,7 +86,6 @@ columnForm.addEventListener('submit', (e) => {
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
         sortableCards(cardsListEl, 'Данные карточек обновились');
-
     }
 
     // скролл к созданной колонке:
@@ -95,7 +94,6 @@ columnForm.addEventListener('submit', (e) => {
     // Прокручиваем к последней колонке
     lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
-    // activateSort();
 });
 
 
@@ -176,7 +174,7 @@ function createColumnFooter(columnItemData) {
             <input type="text" id="add_card_value" placeholder="Введите название">
             <div class="form-options">
                 <button id="submit" type="submit">Добавить</button>
-                <i class="cancel"><img src="./icons/close.svg" alt="Отмена"></i>
+                <i class="cancel fal fa-times"></i>
             </div>
         </form>
     `;

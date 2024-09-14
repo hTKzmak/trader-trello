@@ -1,3 +1,5 @@
+@import "fontawesome/css/all.min.css";
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -69,11 +71,11 @@ $main-color: #36a4a4;
             border-radius: 3px;
             display: flex;
             flex-direction: column;
-            min-width: 250px;
-            max-width: 250px;
+            min-width: 300px;
+            max-width: 300px;
 
             // позволяет делать скролл к определённой колонке
-            scroll-snap-align: start;
+            scroll-snap-align: center;
 
             word-wrap: anywhere;
             word-break: break-all;
@@ -184,6 +186,10 @@ $main-color: #36a4a4;
                 }
             }
 
+            @media screen and (max-width: 450px) {
+                max-width: 270px;
+                min-width: 270px;
+            }
         }
     }
 
@@ -191,12 +197,12 @@ $main-color: #36a4a4;
     .add_column {
         @include buttonFormStyle(3px, 3px, 3px, 3px);
 
-        width: 250px;
-        min-width: 250px;
+        width: 300px;
+        min-width: 300px;
         height: fit-content;
 
         // позволяет делать скролл к этой кнопке
-        scroll-snap-align: start;
+        scroll-snap-align: center;
 
         &:hover {
             background-color: #c4c9d1;
@@ -239,6 +245,7 @@ form {
 
         #submit {
             background-color: white;
+            color: black;
 
             border: none;
             border-radius: 3px;
@@ -299,6 +306,10 @@ form {
         &:hover {
             background: #f0f0f0;
         }
+    }
+
+    @media screen and (max-width: 450px) {
+        width: 200px;
     }
 }
 
@@ -374,7 +385,8 @@ form {
                 @include inputStyle(100%);
 
                 transition: 0.3s;
-                background-color: rgb(186, 186, 186);
+                background-color: white;
+                border: 2px solid $main-color;
             }
 
             .options {
@@ -406,6 +418,10 @@ form {
                     background-color: #dc3545;
                 }
             }
+        }
+
+        @media screen and (max-width: 1000px) {
+            width: 95%;
         }
     }
 }
