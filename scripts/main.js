@@ -233,7 +233,7 @@ function addCardItemToColumn(columnItemData, input) {
 }
 
 // Функция создание карточки
-function addingCard(cardDataId, value, color, columnItemData) {
+function addingCard(cardElemId, value, color, columnItemData) {
     let cardsList = document.getElementById(columnItemData.id).childNodes[1]
 
     let columnForm = document.getElementById(columnItemData.id).childNodes[2].childNodes[3]
@@ -241,7 +241,7 @@ function addingCard(cardDataId, value, color, columnItemData) {
 
     const cardItem = document.createElement('li');
     cardItem.className = 'card';
-    cardItem.id = cardDataId;
+    cardItem.id = cardElemId;
     cardItem.style.background = color;
 
     const cardItemName = document.createElement('span');

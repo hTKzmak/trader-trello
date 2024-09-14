@@ -23,7 +23,8 @@ function createMenuWindow(item, columnItemData, type, button) {
     menuWindow.appendChild(changeButton)
 
     if (type == 'column') {
-
+        const sortButton = createSortButton(menuWindow, item);
+        menuWindow.appendChild(sortButton)
     }
     else if (type == 'card') {
         const colorButton = addColorButton(menuWindow, columnItemData, item);

@@ -50,6 +50,26 @@ $main-color: #36a4a4;
     text-indent: 0.5rem;
 }
 
+@mixin menuWindowStyle(){
+    position: absolute;
+    top: 10px;
+
+    width: 245px;
+
+    padding: 10px 7px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    background-color: white;
+    border: 1px solid #dfe1e6;
+    border-radius: 3px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    z-index: 1000;
+}
+
 // доска (контент колонок)
 .board {
     display: flex;
@@ -274,24 +294,8 @@ form {
 }
 
 // стилизация для окна выбора действий/меню
-.menu-window {
-    position: absolute;
-    top: 10px;
-
-    width: 245px;
-
-    padding: 10px 7px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    background-color: white;
-    border: 1px solid #dfe1e6;
-    border-radius: 3px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-    z-index: 1000;
+.menu-window, .sort-window {
+    @include menuWindowStyle;
 
     #delete {
         background-color: #d12c2c;
@@ -325,6 +329,16 @@ form {
 
     @media screen and (max-width: 450px) {
         width: 200px;
+    }
+}
+
+.sort-window{
+    top: 30px; 
+    left: 150px;
+    
+    @media screen and (max-width: 450px) {
+        top: 50px; 
+        left: -30px;
     }
 }
 

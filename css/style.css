@@ -196,7 +196,7 @@ form .form-options #submit {
   cursor: pointer;
 }
 
-.menu-window {
+.menu-window, .sort-window {
   position: absolute;
   top: 10px;
   width: 245px;
@@ -210,11 +210,11 @@ form .form-options #submit {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
-.menu-window #delete {
+.menu-window #delete, .sort-window #delete {
   background-color: #d12c2c;
   color: #fffcfc;
 }
-.menu-window .menu-button {
+.menu-window .menu-button, .sort-window .menu-button {
   font-weight: 600;
   width: 100%;
   height: 100%;
@@ -228,12 +228,23 @@ form .form-options #submit {
   font-size: 12px;
   cursor: pointer;
 }
-.menu-window .menu-button:hover {
+.menu-window .menu-button:hover, .sort-window .menu-button:hover {
   background: #f0f0f0;
 }
 @media screen and (max-width: 450px) {
-  .menu-window {
+  .menu-window, .sort-window {
     width: 200px;
+  }
+}
+
+.sort-window {
+  top: 30px;
+  left: 150px;
+}
+@media screen and (max-width: 450px) {
+  .sort-window {
+    top: 50px;
+    left: -30px;
   }
 }
 
