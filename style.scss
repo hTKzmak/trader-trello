@@ -9,15 +9,20 @@
 
 body {
     background-color: #f4f5f7;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    overflow: hidden;
-
-    @media screen and (max-width: 450px) {
-        padding-top: 40px;
-        padding-bottom: 40px;
-    }
 }
+
+// old
+// body {
+//     background-color: #f4f5f7;
+//     padding-top: 20px;
+//     padding-bottom: 20px;
+//     overflow: hidden;
+
+//     @media screen and (max-width: 450px) {
+//         padding-top: 40px;
+//         padding-bottom: 40px;
+//     }
+// }
 
 $main-color: #36a4a4;
 
@@ -53,9 +58,12 @@ $main-color: #36a4a4;
     overflow-x: auto;
     padding-bottom: 10px;
     height: 95vh;
-
-    padding-left: 35px;
-    padding-right: 35px;
+    
+    padding: 50px 30px;
+    
+    // old
+    // padding-left: 35px;
+    // padding-right: 35px;
 
     // позволяет делать скролл к выбранному элементу
     scroll-snap-type: x mandatory;
@@ -303,6 +311,8 @@ form {
         border: none;
         border-radius: 3px;
         color: #6a6a6a;
+
+        outline: none;
 
         font-size: 12px;
 

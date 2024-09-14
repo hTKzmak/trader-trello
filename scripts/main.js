@@ -27,6 +27,7 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     formEl.style.display = 'grid';
     spanEl.style.display = 'none';
     inputEl.focus() // устанавливаем фокус на поле ввода
+    buttonEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
 
     // Функционал отображения и исчезновения окна
     document.addEventListener('touchstart', (evt) => {
@@ -91,8 +92,11 @@ columnForm.addEventListener('submit', (e) => {
     // скролл к созданной колонке:
     // Находим последнюю колонку
     const lastColumn = document.querySelector('.columns-list').lastChild;
-    // Прокручиваем к последней колонке
-    lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    
+    if(lastColumn){
+        // Прокручиваем к последней колонке
+        lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
 
 });
 

@@ -22,6 +22,14 @@ function createMenuWindow(item, columnItemData, type, button) {
     });
     menuWindow.appendChild(changeButton)
 
+    if(type == 'column'){
+
+    }
+    else if(type == 'card'){
+        const colorButton = addColorButton();
+        menuWindow.appendChild(colorButton)
+    }
+
     const deleteButton = createOptionButton('Удалить', 'delete', () => {
         deleteElem(item, columnItemData, type)
         menuWindow.remove();
@@ -99,10 +107,10 @@ function deleteElem(item, columnItemData, type) {
 function changeColumnName(item, columnName, columnButton, columnItemData) {
     const columnInput = document.createElement('input');
     columnInput.value = columnName.innerHTML;
-    columnInput.focus()
-
+    
     document.getElementById(item.id).childNodes[0].appendChild(columnInput);
-
+    columnInput.focus()
+    
     const saveNewName = () => {
         const newName = columnInput.value.trim();
 

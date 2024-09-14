@@ -8,15 +8,6 @@
 
 body {
   background-color: #f4f5f7;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  overflow: hidden;
-}
-@media screen and (max-width: 450px) {
-  body {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
 }
 
 .board {
@@ -25,8 +16,7 @@ body {
   overflow-x: auto;
   padding-bottom: 10px;
   height: 95vh;
-  padding-left: 35px;
-  padding-right: 35px;
+  padding: 50px 30px;
   scroll-snap-type: x mandatory;
 }
 .board .columns-list {
@@ -234,6 +224,7 @@ form .form-options #submit {
   border: none;
   border-radius: 3px;
   color: #6a6a6a;
+  outline: none;
   font-size: 12px;
   cursor: pointer;
 }
