@@ -110,6 +110,7 @@ function addOptionButtons(cardItem, columnItemData, index) {
             bottom: 7px;
             left: 11px;
         `
+        descIcon.title = 'У этой карточки есть описание';
 
         if (index !== -1) {
             if (newCardName) {
@@ -122,6 +123,9 @@ function addOptionButtons(cardItem, columnItemData, index) {
 
                 if (columnItemData.cards[index].description !== '') {
                     cardItem.style.paddingBottom = '30px';
+                    
+                    // изменяем цвет иконки в зависимости от цвета карточки 
+                    updateDescColor(descIcon, cardItem.style.background)
                     cardItem.appendChild(descIcon)
                 }
                 else {

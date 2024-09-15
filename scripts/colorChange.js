@@ -12,9 +12,9 @@ function addColorButton(menuWindow, columnItemData, card) {
     Coloris({
         el: '#coloris',
         parent: menuWindow,
-        defaultColor: '#ffffff',
+        defaultColor: 'rgb(255, 255, 255)',
         theme: 'default',
-        format: 'hex',
+        format: 'rgb',
         themeMode: 'light',
 
         onChange: (color) => {
@@ -31,22 +31,34 @@ function addColorButton(menuWindow, columnItemData, card) {
     return colorPicker;
 }
 
-// преобразование hex в rgb в виде объекта
-function hexToRgb(hex) {
-    hex = hex.replace('#', '');
-    const bigint = parseInt(hex, 16);
-    return { r: (bigint >> 16) & 255, g: (bigint >> 8) & 255, b: bigint & 255 };
-}
-
 // обновляем цвет
 function updateCardColor(card, color) {
-    const rgb = hexToRgb(color);
-    const brightness = (rgb.r * 0.299 + rgb.g * 0.587 + rgb.b * 0.114);
+    // Убедитесь, что цвет в формате rgb
+    const rgb = color.match(/\d+/g).map(Number); // Получаем массив [r, g, b]
+
+    // Вычисляем яркость
+    const brightness = (rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114);
     card.style.background = color;
     card.children[0].style.color = brightness > 186 ? 'black' : 'white';
 
     // изменяем цвет икноки описания
-    if(document.getElementById(card.id).childNodes[2]){
+    if (document.getElementById(card.id).childNodes[2]) {
         document.getElementById(card.id).childNodes[2].style.color = brightness > 186 ? 'black' : 'white';
+    }
+}
+
+// отдельная функция для изменения цвета иконки (используется в modalWindow.js)
+function updateDescColor(descIcon, color) {
+    // Убедитесь, что цвет в формате rgb
+    const rgb = color.match(/\d+/g).map(Number); // Получаем массив [r, g, b]
+
+    // Вычисляем яркость
+    const brightness = (rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114);
+
+    // Определяем цвет для иконки
+    const iconColor = brightness > 186 ? 'black' : 'white';
+
+    if (descIcon) {
+        descIcon.style.color = iconColor;
     }
 }

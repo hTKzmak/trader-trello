@@ -71,6 +71,7 @@ body {
 }
 .board .columns-list .column .card-list {
   overflow-y: auto;
+  overflow-x: hidden;
   padding: 10px;
   background-color: #ebecf0;
   list-style-type: none;

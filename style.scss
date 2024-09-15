@@ -149,6 +149,8 @@ $main-color: #36a4a4;
             // список карточек
             .card-list {
                 overflow-y: auto;
+                overflow-x: hidden;
+                
                 padding: 10px;
                 background-color: #ebecf0;
                 list-style-type: none;

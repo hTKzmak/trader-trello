@@ -57,7 +57,7 @@ function sortCards(column, type) {
         cardList.innerHTML = '';
     
         columnsData[index].cards.forEach(card => {
-            addingCard(card.id, card.value, card.color, columnsData[index]);
+            addingCard(card.id, card.value, card.color, card.description, columnsData[index]);
         });
     }
 
