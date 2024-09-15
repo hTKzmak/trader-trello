@@ -13,6 +13,7 @@ function addColorButton(menuWindow, columnItemData, card) {
         el: '#coloris',
         parent: menuWindow,
         defaultColor: 'rgb(255, 255, 255)',
+        wrap: false,
         theme: 'default',
         format: 'rgb',
         themeMode: 'light',

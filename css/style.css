@@ -14,9 +14,8 @@ body {
   display: flex;
   gap: 10px;
   overflow-x: auto;
-  padding-bottom: 10px;
   height: 95vh;
-  padding: 50px 30px;
+  padding: 50px 30px 0 30px;
   scroll-snap-type: x mandatory;
 }
 .board .columns-list {
@@ -231,6 +230,15 @@ form .form-options #submit {
 }
 .menu-window .menu-button:hover, .sort-window .menu-button:hover {
   background: #f0f0f0;
+}
+.menu-window .clr-picker, .sort-window .clr-picker {
+  padding-bottom: 15px;
+}
+.menu-window .clr-picker #clr-color-value, .sort-window .clr-picker #clr-color-value {
+  display: none;
+}
+.menu-window .clr-picker #clr-color-preview, .sort-window .clr-picker #clr-color-preview {
+  display: none;
 }
 @media screen and (max-width: 450px) {
   .menu-window, .sort-window {
