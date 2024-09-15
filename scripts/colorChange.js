@@ -6,6 +6,7 @@ function addColorButton(menuWindow, columnItemData, card) {
     colorPicker.type = 'text'
     colorPicker.className = 'menu-button'
     colorPicker.id = 'coloris'
+    colorPicker.readOnly = 'true'
     colorPicker.value = 'Изменить цвет'
     // colorPicker.setAttribute('data-coloris', '')
 
