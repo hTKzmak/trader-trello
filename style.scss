@@ -132,6 +132,8 @@ $main-color: #36a4a4;
 
             // список карточек
             .card-list {
+                position: relative;
+
                 overflow-y: auto;
                 overflow-x: hidden;
                 

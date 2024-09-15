@@ -39,6 +39,9 @@ body {
   color: white;
   font-weight: bold;
   border-radius: 3px 3px 0 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,6 +72,7 @@ body {
   border-radius: 100px;
 }
 .board .columns-list .column .card-list {
+  position: relative;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 10px;
