@@ -43,13 +43,13 @@ function sortableCards(listOfElem, message) {
             delay: window.innerWidth <= 900 ? 50 : 0,
 
             // вызов функции в начале перемещения колонок
-            onStart: function () {
+            onStart: function (evt) {
                 console.log('НАЧИНАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')
 
                 // убираем выбор выбранного элемента
                 document.querySelector('.board').style.scrollSnapType = 'unset';
             },
-
+            
             // Element dragging ended
             onEnd: function () {
                 console.log('ПРЕКРАЩАЕМ ПЕРЕМЕЩЕНИЕ КАРТОЧЕК')

@@ -17,13 +17,14 @@ const dragCard = (evt) => {
         const cardsList = currentElement.querySelector('.card-list');
 
         cardsList.appendChild(activeElement)
-        console.log('Данные карточек обновились :)')
+        console.log('Перетаскиваем карточку')
     }
 }
 
 const removeChoosen = (evt) => {
     if (evt.target.classList.contains('choosen')) {
         evt.target.classList.remove('choosen');
+        console.log('Данные карточек обновились :)')
     }
 }
 
