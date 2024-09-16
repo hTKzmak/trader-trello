@@ -14,13 +14,9 @@ document.querySelector('.cancel').addEventListener('click', () => {
 
 // функция по скроллу к элементу
 function scrollToItem(elem){
-    const currentScrollY = window.scrollY - 100;  // Запоминаем текущую вертикальную позицию
+    const currentScrollY = window.scrollY - 300;  // Запоминаем текущую вертикальную позицию
     elem.scrollIntoView({ inline: 'end', behavior: 'smooth', block: 'nearest' });
-
-    // Возвращаем вертикальную прокрутку после завершения горизонтальной прокрутки
-    setTimeout(() => {
-        window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
-    }, 500); // Немного времени, чтобы горизонтальная прокрутка завершилась
+    window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
 }
 
 
@@ -64,7 +60,7 @@ addColumnButton.addEventListener('click', (evt) => {
         hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
     }
     else {
-        scrollToItem(columnForm)
+        scrollToItem(addColumnButton)
         showForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'), addColumnButton);
     }
 });
