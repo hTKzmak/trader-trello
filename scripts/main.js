@@ -12,6 +12,17 @@ document.querySelector('.cancel').addEventListener('click', () => {
     document.body.click();
 })
 
+// функция по скроллу к элементу
+function scrollToItem(elem){
+    const currentScrollY = window.scrollY;  // Запоминаем текущую вертикальную позицию
+    elem.scrollIntoView({ inline: 'end', behavior: 'smooth', block: 'nearest' });
+
+    // Возвращаем вертикальную прокрутку после завершения горизонтальной прокрутки
+    setTimeout(() => {
+        window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
+    }, 500); // Немного времени, чтобы горизонтальная прокрутка завершилась
+}
+
 
 // Отображение и исчезновение формы заполнения для создания колонки
 
@@ -27,7 +38,7 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     formEl.style.display = 'grid';
     spanEl.style.display = 'none';
     inputEl.focus() // устанавливаем фокус на поле ввода
-    buttonEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    scrollToItem(buttonEl)
 
     // Функционал отображения и исчезновения окна
     document.addEventListener('touchstart', (evt) => {
@@ -95,7 +106,7 @@ columnForm.addEventListener('submit', (e) => {
 
     if (lastColumn) {
         // Прокручиваем к последней колонке
-        lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        scrollToItem(lastColumn)
     }
 
 });
@@ -149,7 +160,7 @@ function createColumnHeader(columnItemData, columnItem) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        columnItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        scrollToItem(columnItem)
         createMenuWindow(columnItem, columnItemData, 'column', menuButton)
     })
 
@@ -251,7 +262,7 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        cardItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+        scrollToItem(cardItem)
         createMenuWindow(cardItem, columnItemData, 'card', menuButton)
     })
 
