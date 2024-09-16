@@ -64,6 +64,7 @@ addColumnButton.addEventListener('click', (evt) => {
         hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
     }
     else {
+        scrollToItem(columnForm)
         showForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'), addColumnButton);
     }
 });
