@@ -14,8 +14,8 @@ document.querySelector('.cancel').addEventListener('click', () => {
 
 // функция по скроллу к элементу
 function scrollToItem(elem){
-    const currentScrollY = window.scrollY - 300;  // Запоминаем текущую вертикальную позицию
-    elem.scrollIntoView({ inline: 'end', behavior: 'smooth', block: 'nearest' });
+    const currentScrollY = window.scrollY;  // Запоминаем текущую вертикальную позицию
+    elem.scrollIntoView({behavior: 'smooth'});
     window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
 }
 
