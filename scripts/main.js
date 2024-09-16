@@ -27,7 +27,7 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     formEl.style.display = 'grid';
     spanEl.style.display = 'none';
     inputEl.focus() // устанавливаем фокус на поле ввода
-    buttonEl.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center' });
+    buttonEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
 
     // Функционал отображения и исчезновения окна
     document.addEventListener('touchstart', (evt) => {
@@ -95,7 +95,7 @@ columnForm.addEventListener('submit', (e) => {
 
     if (lastColumn) {
         // Прокручиваем к последней колонке
-        lastColumn.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center' });
+        lastColumn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }
 
 });
@@ -149,7 +149,7 @@ function createColumnHeader(columnItemData, columnItem) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        columnItem.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center' });
+        columnItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         createMenuWindow(columnItem, columnItemData, 'column', menuButton)
     })
 
@@ -251,7 +251,7 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        cardItem.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center' });
+        cardItem.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
         createMenuWindow(cardItem, columnItemData, 'card', menuButton)
     })
 

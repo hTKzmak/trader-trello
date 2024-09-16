@@ -54,7 +54,7 @@ function createMenuWindow(item, columnItemData, type, button) {
     else if (type == 'card') {
         document.addEventListener('click', (evt) => {
             menuWindow.style.top = (evt.clientY - 63) + 'px';
-            menuWindow.style.left = window.innerWidth > 450 ? (evt.clientX - 257) + 'px' : '25%';
+            menuWindow.style.left = window.innerWidth > 450 ? '50px' : '25%';
         }, { once: true })
 
         item.parentNode.parentNode.appendChild(menuWindow)
