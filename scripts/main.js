@@ -14,7 +14,7 @@ document.querySelector('.cancel').addEventListener('click', () => {
 
 // функция по скроллу к элементу
 function scrollToItem(elem){
-    const currentScrollY = window.scrollY;  // Запоминаем текущую вертикальную позицию
+    const currentScrollY = window.scrollY - 100;  // Запоминаем текущую вертикальную позицию
     elem.scrollIntoView({ inline: 'end', behavior: 'smooth', block: 'nearest' });
 
     // Возвращаем вертикальную прокрутку после завершения горизонтальной прокрутки
@@ -38,7 +38,6 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     formEl.style.display = 'grid';
     spanEl.style.display = 'none';
     inputEl.focus() // устанавливаем фокус на поле ввода
-    scrollToItem(buttonEl)
 
     // Функционал отображения и исчезновения окна
     document.addEventListener('touchstart', (evt) => {
@@ -160,7 +159,6 @@ function createColumnHeader(columnItemData, columnItem) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        scrollToItem(columnItem)
         createMenuWindow(columnItem, columnItemData, 'column', menuButton)
     })
 
@@ -262,7 +260,6 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        scrollToItem(cardItem)
         createMenuWindow(cardItem, columnItemData, 'card', menuButton)
     })
 
