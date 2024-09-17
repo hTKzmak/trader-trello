@@ -239,6 +239,10 @@ form .form-options #submit {
 .sort-window .menu-button:hover {
   background: #f0f0f0;
 }
+.menu-window .clr-picker,
+.sort-window .clr-picker {
+  width: 230px;
+}
 .menu-window .clr-picker #clr-color-value,
 .menu-window .clr-picker #clr-color-preview,
 .sort-window .clr-picker #clr-color-value,
