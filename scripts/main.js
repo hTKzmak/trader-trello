@@ -14,16 +14,9 @@ document.querySelector('.cancel').addEventListener('click', () => {
 
 // функция по скроллу к элементу
 function scrollToItem(elem) {
-    // const currentScrollY = window.scrollY;  // Запоминаем текущую вертикальную позицию
-    // elem.scrollIntoView({ behavior: 'smooth' });
-    // window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
-
-    const board = document.querySelector('.board');
-    const scrollAmount = 100; // количество пикселей для прокрутки
-    board.scrollTo({
-        left: board.scrollLeft - scrollAmount,
-        behavior: 'smooth' // плавная прокрутка
-    });
+    const currentScrollY = window.scrollY;  // Запоминаем текущую вертикальную позицию
+    elem.scrollIntoView({ behavior: 'smooth' });
+    window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
 }
 
 
@@ -67,10 +60,7 @@ addColumnButton.addEventListener('click', (evt) => {
         hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
     }
     else {
-        // скролл к нкопке создания колонки
-        addColumnButton.scrollIntoView({ behavior: 'smooth' });
-        window.scrollTo({ top: window.scrollY, behavior: 'smooth' });
-        // scrollToItem(addColumnButton)
+        scrollToItem(addColumnButton)
         showForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'), addColumnButton);
     }
 });
@@ -105,13 +95,6 @@ columnForm.addEventListener('submit', (e) => {
         const cardsListEl = document.querySelectorAll('.card-list');
         sortableCards(cardsListEl, 'Данные карточек обновились');
     }
-
-    // скролл к созданной колонке:
-    // Находим последнюю колонку
-    const lastColumn = document.querySelector('.columns-list').lastChild;
-
-    // Прокручиваем к последней колонке
-    scrollToItem(lastColumn)
 
 });
 
@@ -308,4 +291,13 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
 function addColumnItemToPage(columnItem) {
     const columnsList = document.querySelector('.columns-list');
     columnsList.appendChild(columnItem);
+
+    // скролл к созданной колонке:
+    // Находим последнюю колонку
+    const lastColumn = document.querySelector('.columns-list').lastChild;
+
+    if (lastColumn) {
+        // Прокручиваем к последней колонке
+        scrollToItem(lastColumn)
+    }
 }
