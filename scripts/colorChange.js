@@ -10,14 +10,25 @@ function addColorButton(menuWindow, columnItemData, card) {
     colorPicker.value = 'Изменить цвет'
     // colorPicker.setAttribute('data-coloris', '')
 
+    colorPicker.addEventListener('click', () => {
+        // menuWindow.style.display = 'none';
+    })
+
     Coloris({
         el: '#coloris',
         parent: menuWindow,
+        // parent: document.body,
+        // parent: card.parentNode.parentNode,
         defaultColor: 'rgb(255, 255, 255)',
         wrap: false,
         theme: 'default',
         format: 'rgb',
         themeMode: 'light',
+
+        clearButton: true,
+        clearLabel: 'Очистить',
+        closeButton: true,
+        closeLabel: 'Закрыть',
 
         onChange: (color) => {
             colorPicker.value = 'Изменить цвет'
@@ -33,13 +44,26 @@ function addColorButton(menuWindow, columnItemData, card) {
     return colorPicker;
 }
 
-// обновляем цвет
-function updateCardColor(card, color) {
+// функция для получения яркости
+function getBrightness(color) {
+    // если цвета нет, то его значение будет белый цвет, иначе у него будет своё значение
+    const rgbColor = !color ? 'rgb(255, 255, 255)' : color;
+
     // Убедитесь, что цвет в формате rgb
-    const rgb = color.match(/\d+/g).map(Number); // Получаем массив [r, g, b]
+    const rgb = rgbColor.match(/\d+/g).map(Number); // Получаем массив [r, g, b]
 
     // Вычисляем яркость
     const brightness = (rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114);
+
+    return brightness;
+}
+
+// обновляем цвет
+function updateCardColor(card, color) {
+
+    // Вычисляем яркость
+    const brightness = getBrightness(color);
+
     card.style.background = color;
     card.children[0].style.color = brightness > 186 ? 'black' : 'white';
 
@@ -51,11 +75,7 @@ function updateCardColor(card, color) {
 
 // отдельная функция для изменения цвета иконки (используется в modalWindow.js)
 function updateDescColor(descIcon, color) {
-    // Убедитесь, что цвет в формате rgb
-    const rgb = color.match(/\d+/g).map(Number); // Получаем массив [r, g, b]
-
-    // Вычисляем яркость
-    const brightness = (rgb[0] * 0.299 + rgb[1] * 0.587 + rgb[2] * 0.114);
+    const brightness = getBrightness(color);
 
     // Определяем цвет для иконки
     const iconColor = brightness > 186 ? 'black' : 'white';
