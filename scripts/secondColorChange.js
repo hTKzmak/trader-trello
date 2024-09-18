@@ -5,40 +5,39 @@ function addColorButton(menuWindow, columnItemData, card) {
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
     colorPicker.className = 'menu-button'
-    colorPicker.id = 'coloris'
-    colorPicker.readOnly = 'true'
-    colorPicker.value = 'Изменить цвет'
+    colorPicker.style.height = '35px'
     // colorPicker.setAttribute('data-coloris', '')
 
-    Coloris({
-        el: '#coloris',
-        parent: menuWindow,
-        // parent: document.body,
-        // parent: card.parentNode.parentNode,
-        defaultColor: 'rgb(255, 255, 255)',
-        wrap: false,
-        theme: 'default',
-        format: 'rgb',
-        themeMode: 'light',
+    colorPicker.addEventListener('click', () => [
+        menuWindow.style.display = 'none'
+    ])
 
-        clearButton: true,
-        clearLabel: 'Очистить',
-        closeButton: true,
-        closeLabel: 'Закрыть',
+    colorPicker.addEventListener('input', (evt) => {
+        const rgbColor = hexToRgb(evt.target.value);
 
-        onChange: (color) => {
-            console.log(color)
-            colorPicker.value = 'Изменить цвет'
-            updateCardColor(document.getElementById(card.id), color);
-            const index = columnItemData.cards.findIndex(elem => elem.id == card.id);
+        updateCardColor(document.getElementById(card.id), rgbColor);
+        const index = columnItemData.cards.findIndex(elem => elem.id == card.id);
 
-            if (index !== -1) {
-                columnItemData.cards[index].color = color;
-            }
+        if (index !== -1) {
+            columnItemData.cards[index].color = rgbColor;
         }
-    });
+    })
 
     return colorPicker;
+}
+
+// преобразование hex в rgb
+function hexToRgb(hex) {
+    hex = hex.replace(/^#/, '');
+    if (hex.length === 3) {
+        hex = hex.split('').map(char => char + char).join('');
+    }
+    const bigint = parseInt(hex, 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+
+    return `rgb(${r}, ${g}, ${b})`;
 }
 
 // функция для получения яркости
