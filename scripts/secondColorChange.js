@@ -21,9 +21,9 @@ function addColorButton(menuWindow, columnItemData, card) {
     `
 
 
-    // colorPicker.addEventListener('click', () => [
-    //     // menuWindow.style.display = 'none'
-    // ])
+    colorPicker.addEventListener('click', () => [
+        menuWindow.style.display = 'none'
+    ])
 
     colorPicker.addEventListener('input', (evt) => {
         const rgbColor = hexToRgb(evt.target.value);
@@ -37,7 +37,7 @@ function addColorButton(menuWindow, columnItemData, card) {
     })
 
     colorButton.appendChild(colorPicker)
-    
+
     return colorButton;
 }
 
