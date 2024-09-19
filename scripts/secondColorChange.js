@@ -1,16 +1,29 @@
 // colorChange.js - файл для расботы с изменением цвета карточек
 
 function addColorButton(menuWindow, columnItemData, card) {
-    // Создаем элемент input типа text (для библиотеки coloris)
+
+    const colorButton = document.createElement('button')
+    colorButton.className = 'menu-button'
+    colorButton.innerHTML = 'Изменить цвет'
+    colorButton.style = `
+        position: relative;
+    `
+
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
-    colorPicker.className = 'menu-button'
-    colorPicker.style.height = '35px'
-    // colorPicker.setAttribute('data-coloris', '')
+    colorPicker.style = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        opacity: 0;
+        cursor: pointer;
+    `
 
-    colorPicker.addEventListener('click', () => [
-        menuWindow.style.display = 'none'
-    ])
+
+    // colorPicker.addEventListener('click', () => [
+    //     // menuWindow.style.display = 'none'
+    // ])
 
     colorPicker.addEventListener('input', (evt) => {
         const rgbColor = hexToRgb(evt.target.value);
@@ -23,7 +36,9 @@ function addColorButton(menuWindow, columnItemData, card) {
         }
     })
 
-    return colorPicker;
+    colorButton.appendChild(colorPicker)
+    
+    return colorButton;
 }
 
 // преобразование hex в rgb
