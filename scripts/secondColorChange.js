@@ -8,29 +8,40 @@ function addColorButton(menuWindow, columnItemData, card) {
     colorButton.style = `
         position: relative;
     `
-
+    
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
     colorPicker.style = `
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: inherit;
-        opacity: 0;
-        cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    opacity: 0;
+    cursor: pointer;
     `
 
+    colorButton.addEventListener('click', () => {
+        menuWindow.style.opacity = '0'
+        menuWindow.style.pointerEvents = 'none'
 
+        colorPicker.click()
+    })
+    
+    
     colorPicker.addEventListener('input', (evt) => {
         const rgbColor = hexToRgb(evt.target.value);
-
+        
         updateCardColor(document.getElementById(card.id), rgbColor);
         const index = columnItemData.cards.findIndex(elem => elem.id == card.id);
-
+        
         if (index !== -1) {
             columnItemData.cards[index].color = rgbColor;
         }
     })
+
+    colorPicker.addEventListener('change', () => [
+        menuWindow.remove()
+    ])
 
     colorButton.appendChild(colorPicker)
 

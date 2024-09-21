@@ -283,7 +283,8 @@ form {
 
 // стилизация для окна выбора действий/меню
 .menu-window,
-.sort-window {
+.sort-window
+.color-window {
     @include menuWindowStyle;
 
     #delete {

@@ -201,7 +201,7 @@ form .form-options #submit {
 }
 
 .menu-window,
-.sort-window {
+.sort-window .color-window {
   position: absolute;
   top: 10px;
   width: 245px;
@@ -216,12 +216,12 @@ form .form-options #submit {
   z-index: 1000;
 }
 .menu-window #delete,
-.sort-window #delete {
+.sort-window .color-window #delete {
   background-color: #d12c2c;
   color: #fffcfc;
 }
 .menu-window .menu-button,
-.sort-window .menu-button {
+.sort-window .color-window .menu-button {
   font-weight: 600;
   width: 100%;
   height: 100%;
@@ -236,33 +236,33 @@ form .form-options #submit {
   cursor: pointer;
 }
 .menu-window .menu-button:hover,
-.sort-window .menu-button:hover {
+.sort-window .color-window .menu-button:hover {
   background: #f0f0f0;
 }
 .menu-window .clr-picker,
-.sort-window .clr-picker {
+.sort-window .color-window .clr-picker {
   width: 230px;
 }
 .menu-window .clr-picker #clr-color-value,
 .menu-window .clr-picker #clr-color-preview,
-.sort-window .clr-picker #clr-color-value,
-.sort-window .clr-picker #clr-color-preview {
+.sort-window .color-window .clr-picker #clr-color-value,
+.sort-window .color-window .clr-picker #clr-color-preview {
   display: none;
 }
 .menu-window .clr-picker #clr-clear,
 .menu-window .clr-picker #clr-close,
-.sort-window .clr-picker #clr-clear,
-.sort-window .clr-picker #clr-close {
+.sort-window .color-window .clr-picker #clr-clear,
+.sort-window .color-window .clr-picker #clr-close {
   margin-top: 15px;
 }
 .menu-window .clr-picker button,
-.sort-window .clr-picker button {
+.sort-window .color-window .clr-picker button {
   padding: 5px 10px;
   height: auto;
 }
 @media screen and (max-width: 450px) {
   .menu-window,
-  .sort-window {
+  .sort-window .color-window {
     width: 200px;
   }
 }
