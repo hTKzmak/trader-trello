@@ -8,9 +8,10 @@ function addColorButton(menuWindow, columnItemData, card) {
     colorButton.style = `
         position: relative;
     `
-    
+
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
+    colorPicker.value = rgbToHex(card.style.backgroundColor)
     colorPicker.style = `
     position: absolute;
     top: 0;
@@ -26,26 +27,36 @@ function addColorButton(menuWindow, columnItemData, card) {
 
         colorPicker.click()
     })
-    
-    
+
+
     colorPicker.addEventListener('input', (evt) => {
         const rgbColor = hexToRgb(evt.target.value);
-        
+
         updateCardColor(document.getElementById(card.id), rgbColor);
         const index = columnItemData.cards.findIndex(elem => elem.id == card.id);
-        
+
         if (index !== -1) {
             columnItemData.cards[index].color = rgbColor;
         }
     })
 
-    colorPicker.addEventListener('change', () => [
+    colorPicker.addEventListener('change', (evt) => {
         menuWindow.remove()
-    ])
+    })
 
     colorButton.appendChild(colorPicker)
 
     return colorButton;
+}
+
+// функция по преобразованию rgb цвета в hex
+function rgbToHex(rgb){
+    const rgbColor = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+
+    return (rgbColor && rgbColor.length === 4) ? "#" +
+        ("0" + parseInt(rgbColor[1],10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgbColor[2],10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgbColor[3],10).toString(16)).slice(-2) : '';
 }
 
 // преобразование hex в rgb
