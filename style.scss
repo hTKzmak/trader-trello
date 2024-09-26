@@ -190,6 +190,8 @@ $main-color: #36a4a4;
 
                     &:hover {
                         background-color: #f4f5f7;
+                        outline: 2px solid $main-color;
+                        cursor: pointer
                     }
                 }
             }

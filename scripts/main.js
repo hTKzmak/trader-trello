@@ -23,10 +23,9 @@ function scrollToItem(elem) {
 // Отображение и исчезновение формы заполнения для создания колонки
 
 // Функция для скрытия формы заполнения (для колонок и карточек)
-function hideForm(formEl, spanEl, inputEl) {
+function hideForm(formEl, spanEl) {
     formEl.style.display = 'none';
     spanEl.style.display = 'block';
-    inputEl.value = "";
 }
 
 // Функция для отображения формы заполнения (для колонок и карточек)
@@ -35,18 +34,20 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     spanEl.style.display = 'none';
     inputEl.focus() // устанавливаем фокус на поле ввода
 
+    scrollToItem(buttonEl)
+
     // Функционал отображения и исчезновения окна
     document.addEventListener('touchstart', (evt) => {
         const touch = evt.touches[0];
 
         if (!buttonEl.contains(touch.target)) {
-            hideForm(formEl, spanEl, inputEl);
+            hideForm(formEl, spanEl);
         }
     })
 
     document.addEventListener('click', (evt) => {
         if (!buttonEl.contains(evt.target)) {
-            hideForm(formEl, spanEl, inputEl);
+            hideForm(formEl, spanEl);
         }
     })
 }
@@ -57,10 +58,9 @@ addColumnButton.addEventListener('click', (evt) => {
     const ids = ['add_column_value', 'submit'];
 
     if (!classes.includes(evt.target.className) && !ids.includes(evt.target.id) && evt.target.tagName !== 'SPAN' && evt.target != addColumnButton) {
-        hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
+        hideForm(columnForm, addColumnButton.querySelector('span'));
     }
     else {
-        scrollToItem(addColumnButton)
         showForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'), addColumnButton);
     }
 });
@@ -88,13 +88,15 @@ columnForm.addEventListener('submit', (e) => {
         addColumnItemToPage(columnItem);
 
         // скрываем формы заполнения
-        hideForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'));
+        hideForm(columnForm, addColumnButton.querySelector('span'));
 
 
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
         sortableCards(cardsListEl, 'Данные карточек обновились');
     }
+
+    addColumnButton.querySelector('input').value = "";
 
 });
 
@@ -148,6 +150,7 @@ function createColumnHeader(columnItemData, columnItem) {
 
     menuButton.addEventListener('click', () => {
         createMenuWindow(columnItem, columnItemData, 'column', menuButton)
+        scrollToItem(menuButton)
     })
 
     columnHeader.appendChild(columnName)
@@ -249,6 +252,7 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
 
     menuButton.addEventListener('click', () => {
         createMenuWindow(cardItem, columnItemData, 'card', menuButton)
+        scrollToItem(menuButton)
     })
 
     cardItem.appendChild(cardItemName);
