@@ -14,11 +14,12 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     colorPicker.value = rgbToHex(item.style.backgroundColor)
     colorPicker.style = `
     position: absolute;
-    top: 0;
+    top: -15px;
     left: 0;
     width: inherit;
     opacity: 0;
     cursor: pointer;
+    pointer-events: none;
     `
 
     colorButton.addEventListener('click', () => {
@@ -55,7 +56,8 @@ function addColorButton(menuWindow, columnItemData, item, type) {
         menuWindow.remove()
     })
 
-    colorButton.appendChild(colorPicker)
+    // colorButton.appendChild(colorPicker)
+    menuWindow.appendChild(colorPicker)
 
     return colorButton;
 }
