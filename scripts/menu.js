@@ -15,13 +15,14 @@ function createMenuWindow(item, columnItemData, type, button) {
     const menuWindow = document.createElement('div');
     menuWindow.className = 'menu-window';
 
-    // кнопка удаления
+    // кнопка изменения
     const changeButton = createOptionButton('Изменить', '', () => {
         changeElem(item, columnItemData, type)
         menuWindow.remove();
     });
     menuWindow.appendChild(changeButton)
 
+    // кнопка сортировки и изменение цвета (в зависимости от значения type)
     if (type == 'column') {
         const sortButton = createSortButton(menuWindow, item);
         menuWindow.appendChild(sortButton)
@@ -30,7 +31,8 @@ function createMenuWindow(item, columnItemData, type, button) {
         const colorButton = addColorButton(menuWindow, columnItemData, item);
         menuWindow.appendChild(colorButton)
     }
-
+    
+    // кнопка удаления
     const deleteButton = createOptionButton('Удалить', 'delete', () => {
         deleteElem(item, columnItemData, type)
         menuWindow.remove();

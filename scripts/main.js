@@ -289,6 +289,14 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
         sortableCards(cardsListEl, 'Данные карточек обновились');
     }
 
+    // при нажатии на карточку появляется окно редактирования
+    // Сработает в том случае, если мы нажади именно на тег li, а не на что-то другое (например, кнопка меню)
+    cardItem.addEventListener('click', (event) => {
+        if(event.target.tagName == 'LI'){
+            addWindowModal(cardItem, columnItemData)
+        }
+    })    
+
 }
 
 // Функция для добавления колонки на страницу
