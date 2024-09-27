@@ -27,10 +27,9 @@ function createMenuWindow(item, columnItemData, type, button) {
         const sortButton = createSortButton(menuWindow, item);
         menuWindow.appendChild(sortButton)
     }
-    else if (type == 'card') {
-        const colorButton = addColorButton(menuWindow, columnItemData, item);
-        menuWindow.appendChild(colorButton)
-    }
+    
+    const colorButton = addColorButton(menuWindow, columnItemData, item, type);
+    menuWindow.appendChild(colorButton)
     
     // кнопка удаления
     const deleteButton = createOptionButton('Удалить', 'delete', () => {

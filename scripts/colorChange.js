@@ -1,6 +1,6 @@
 // colorChange.js - файл для расботы с изменением цвета карточек
 
-function addColorButton(menuWindow, columnItemData, card) {
+function addColorButton(menuWindow, columnItemData, item, type) {
 
     const colorButton = document.createElement('button')
     colorButton.className = 'menu-button'
@@ -11,7 +11,7 @@ function addColorButton(menuWindow, columnItemData, card) {
 
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
-    colorPicker.value = rgbToHex(card.style.backgroundColor)
+    colorPicker.value = rgbToHex(item.style.backgroundColor)
     colorPicker.style = `
     position: absolute;
     top: 0;
@@ -32,15 +32,26 @@ function addColorButton(menuWindow, columnItemData, card) {
     colorPicker.addEventListener('input', (evt) => {
         const rgbColor = hexToRgb(evt.target.value);
 
-        updateCardColor(document.getElementById(card.id), rgbColor);
-        const index = columnItemData.cards.findIndex(elem => elem.id == card.id);
+        if (type == 'card') {
+            updateCardColor(document.getElementById(item.id), rgbColor);
+            const index = columnItemData.cards.findIndex(elem => elem.id == item.id);
 
-        if (index !== -1) {
-            columnItemData.cards[index].color = rgbColor;
+            if (index !== -1) {
+                columnItemData.cards[index].color = rgbColor;
+            }
         }
+        else if (type == 'column') {
+            updateColumnColor(document.getElementById(item.id), rgbColor);
+            const index = columnsData.findIndex(elem => elem.id == item.id);
+
+            if (index !== -1) {
+                columnsData[index].color = rgbColor;
+            }
+        }
+
     })
 
-    colorPicker.addEventListener('change', (evt) => {
+    colorPicker.addEventListener('change', () => {
         menuWindow.remove()
     })
 
@@ -50,13 +61,13 @@ function addColorButton(menuWindow, columnItemData, card) {
 }
 
 // функция по преобразованию rgb цвета в hex
-function rgbToHex(rgb){
+function rgbToHex(rgb) {
     const rgbColor = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
 
     return (rgbColor && rgbColor.length === 4) ? "#" +
-        ("0" + parseInt(rgbColor[1],10).toString(16)).slice(-2) +
-        ("0" + parseInt(rgbColor[2],10).toString(16)).slice(-2) +
-        ("0" + parseInt(rgbColor[3],10).toString(16)).slice(-2) : '';
+        ("0" + parseInt(rgbColor[1], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgbColor[2], 10).toString(16)).slice(-2) +
+        ("0" + parseInt(rgbColor[3], 10).toString(16)).slice(-2) : '';
 }
 
 // преобразование hex в rgb
@@ -99,6 +110,23 @@ function updateCardColor(card, color) {
     // изменяем цвет икноки описания
     if (document.getElementById(card.id).childNodes[2]) {
         document.getElementById(card.id).childNodes[2].style.color = brightness > 186 ? 'black' : 'white';
+    }
+}
+
+function updateColumnColor(column, color){
+    // Вычисляем яркость
+    const brightness = getBrightness(color);
+
+    // column-header
+    document.getElementById(column.id).childNodes[0].style.background = color;
+    // span в column-header
+    document.getElementById(column.id).childNodes[0].childNodes[0].style.color = brightness > 186 ? 'black' : 'white';
+
+    // изменение цвета кнопки меню (трёх точек)
+    const menuButton = document.getElementById(column.id).childNodes[0].childNodes[1].children[0]
+
+    for(let i = 0; i < menuButton.children.length; i++){
+        menuButton.children[i].style.backgroundColor = brightness > 186 ? 'black' : 'white';
     }
 }
 

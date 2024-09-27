@@ -75,6 +75,7 @@ columnForm.addEventListener('submit', (e) => {
     let columnItemData = {
         id: Date.now(),
         value: inputValue,
+        color: 'rgb(54, 164, 164)',
         cards: []
     };
 
@@ -90,6 +91,7 @@ columnForm.addEventListener('submit', (e) => {
         // скрываем формы заполнения
         hideForm(columnForm, addColumnButton.querySelector('span'));
 
+        console.log(columnsData)
 
         // Функционал Drag and Drop с библиотекой SortableJS для карточек
         const cardsListEl = document.querySelectorAll('.card-list');
