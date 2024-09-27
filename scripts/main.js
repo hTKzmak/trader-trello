@@ -42,13 +42,13 @@ function showForm(formEl, spanEl, inputEl, buttonEl) {
     document.addEventListener('touchstart', (evt) => {
         const touch = evt.touches[0];
 
-        if (!buttonEl.contains(touch.target)) {
+        if (!buttonEl.contains(touch.target) && !inputEl.value) {
             hideForm(formEl, spanEl);
         }
     })
 
     document.addEventListener('click', (evt) => {
-        if (!buttonEl.contains(evt.target)) {
+        if (!buttonEl.contains(evt.target) && !inputEl.value) {
             hideForm(formEl, spanEl);
         }
     })

@@ -169,7 +169,7 @@ $main-color: #36a4a4;
                         border: none;
 
                         cursor: pointer;
-                        display: block;
+                        display: none;
 
                         background-color: #fcfcfc;
 
@@ -186,11 +186,20 @@ $main-color: #36a4a4;
                                 border-radius: 100px;
                             }
                         }
+
+                        @media screen and (max-width: 900px) {
+                            display: block;
+                        }
+
                     }
 
                     &:hover {
                         background-color: #f4f5f7;
-                        cursor: pointer
+                        cursor: pointer;
+
+                        .menu-button {
+                            display: block;
+                        }
                     }
                 }
             }

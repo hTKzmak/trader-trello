@@ -100,7 +100,7 @@ body {
   border-radius: 100px;
   border: none;
   cursor: pointer;
-  display: block;
+  display: none;
   background-color: #fcfcfc;
 }
 .board .columns-list .column .card-list .card .menu-button .menu-icon {
@@ -115,9 +115,17 @@ body {
   background-color: #36a4a4;
   border-radius: 100px;
 }
+@media screen and (max-width: 900px) {
+  .board .columns-list .column .card-list .card .menu-button {
+    display: block;
+  }
+}
 .board .columns-list .column .card-list .card:hover {
   background-color: #f4f5f7;
   cursor: pointer;
+}
+.board .columns-list .column .card-list .card:hover .menu-button {
+  display: block;
 }
 .board .columns-list .column .column-footer {
   padding: 10px;

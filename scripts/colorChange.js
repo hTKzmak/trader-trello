@@ -106,8 +106,18 @@ function updateCardColor(card, color) {
     // Вычисляем яркость
     const brightness = getBrightness(color);
 
+    console.log(card)
+
     card.style.background = color;
     card.children[0].style.color = brightness > 186 ? 'black' : 'white';
+
+    // изменяем цвет кнопки
+    const menuButton = document.getElementById(card.id).children[1]
+    menuButton.style.backgroundColor = color;
+
+    for(let i = 0; i < menuButton.children[0].children.length; i++){
+        menuButton.children[0].children[i].style.backgroundColor = brightness > 186 ? 'black' : 'white';
+    }
 
     // изменяем цвет икноки описания
     if (document.getElementById(card.id).childNodes[2]) {
