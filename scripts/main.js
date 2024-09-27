@@ -14,9 +14,11 @@ document.querySelector('.cancel').addEventListener('click', () => {
 
 // функция по скроллу к элементу
 function scrollToItem(elem) {
-    const currentScrollY = window.scrollY;  // Запоминаем текущую вертикальную позицию
-    elem.scrollIntoView({ behavior: 'smooth' });
-    window.scrollTo({ top: currentScrollY, behavior: 'smooth' });
+    elem.scrollIntoView({
+        behavior: 'smooth', // плавный скролл
+        block: 'nearest',   // по вертикали оставляем без изменений
+        inline: 'center'    // горизонтальное позиционирование элемента в центре
+    });
 }
 
 
@@ -151,8 +153,8 @@ function createColumnHeader(columnItemData, columnItem) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        createMenuWindow(columnItem, columnItemData, 'column', menuButton)
         scrollToItem(menuButton)
+        createMenuWindow(columnItem, columnItemData, 'column', menuButton)
     })
 
     columnHeader.appendChild(columnName)
@@ -253,8 +255,8 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
     const menuButton = createMenuButton();
 
     menuButton.addEventListener('click', () => {
-        createMenuWindow(cardItem, columnItemData, 'card', menuButton)
         scrollToItem(menuButton)
+        createMenuWindow(cardItem, columnItemData, 'card', menuButton)
     })
 
     cardItem.appendChild(cardItemName);
