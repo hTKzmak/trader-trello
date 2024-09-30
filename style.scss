@@ -57,6 +57,13 @@ $main-color: #36a4a4;
     z-index: 1000;
 }
 
+// убирает выделение с этих элементов
+button,
+input, div, form {
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-tap-highlight-color: transparent;
+}
+
 // доска (контент колонок)
 .board {
     display: flex;
@@ -190,7 +197,6 @@ $main-color: #36a4a4;
                         @media screen and (max-width: 900px) {
                             display: block;
                         }
-
                     }
 
                     &:hover {

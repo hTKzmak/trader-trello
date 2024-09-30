@@ -23,9 +23,12 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     `
 
     colorButton.addEventListener('click', () => {
+        // делаем окно меню невидимым
         menuWindow.style.opacity = '0'
         menuWindow.style.pointerEvents = 'none'
 
+        colorPicker.style.pointerEvents = 'auto'
+        
         colorPicker.click()
     })
 
@@ -52,11 +55,11 @@ function addColorButton(menuWindow, columnItemData, item, type) {
 
     })
 
+    // убираем со страницы окно меню
     colorPicker.addEventListener('change', () => {
         menuWindow.remove()
     })
 
-    // colorButton.appendChild(colorPicker)
     menuWindow.appendChild(colorPicker)
 
     return colorButton;
