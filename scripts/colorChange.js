@@ -19,22 +19,21 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     width: inherit;
     opacity: 0;
     cursor: pointer;
-    pointer-events: none;
+    pointer-events: ${window.innerWidth < 700 ? 'auto' : 'none'};
     `
 
     colorButton.addEventListener('click', () => {
-        if(window.innerWidth < 700){
+        if (window.innerWidth < 700) {
             colorPicker.style.pointerEvents = 'auto'
         }
-        else{
-            // делаем окно меню невидимым
-            menuWindow.style.opacity = '0'
-            menuWindow.style.pointerEvents = 'none'
-    
+        else {
             colorPicker.style.pointerEvents = 'auto'
         }
 
-        
+        // делаем окно меню невидимым
+        menuWindow.style.opacity = '0'
+        menuWindow.style.pointerEvents = 'none'
+
         colorPicker.click()
     })
 
@@ -62,14 +61,26 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     })
 
     // убираем со страницы окно меню
-    colorPicker.addEventListener('change', () => {
-        menuWindow.remove()
-    })
+    // colorPicker.addEventListener('change', () => {
+    //     // menuWindow.remove()
+    // })
 
-    if(window.innerWidth < 700){
+    const isAppleDevice = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
+
+    colorPicker.addEventListener('change', () => {
+        if (isAppleDevice) {
+            alert('Я ненавижу IOS и MacOS')
+            menuWindow.remove();
+        } else {
+            menuWindow.remove();
+        }
+    });
+
+
+    if (window.innerWidth < 700) {
         colorButton.appendChild(colorPicker)
     }
-    else{
+    else {
         menuWindow.appendChild(colorPicker)
     }
 
@@ -129,7 +140,7 @@ function updateCardColor(card, color) {
     const menuButton = document.getElementById(card.id).children[1]
     menuButton.style.backgroundColor = color;
 
-    for(let i = 0; i < menuButton.children[0].children.length; i++){
+    for (let i = 0; i < menuButton.children[0].children.length; i++) {
         menuButton.children[0].children[i].style.backgroundColor = brightness > 186 ? 'black' : 'white';
     }
 
@@ -139,7 +150,7 @@ function updateCardColor(card, color) {
     }
 }
 
-function updateColumnColor(column, color){
+function updateColumnColor(column, color) {
     // Вычисляем яркость
     const brightness = getBrightness(color);
 
@@ -151,7 +162,7 @@ function updateColumnColor(column, color){
     // изменение цвета кнопки меню (трёх точек)
     const menuButton = document.getElementById(column.id).childNodes[0].childNodes[1].children[0]
 
-    for(let i = 0; i < menuButton.children.length; i++){
+    for (let i = 0; i < menuButton.children.length; i++) {
         menuButton.children[i].style.backgroundColor = brightness > 186 ? 'black' : 'white';
     }
 }
