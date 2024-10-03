@@ -31,27 +31,33 @@ function hideForm(formEl, spanEl) {
 }
 
 // Функция для отображения формы заполнения (для колонок и карточек)
-function showForm(formEl, spanEl, inputEl, buttonEl) {
+function showForm(formEl, spanEl, inputEl, buttonEl, type, data) {
     formEl.style.display = 'grid';
     spanEl.style.display = 'none';
     inputEl.focus() // устанавливаем фокус на поле ввода
 
     scrollToItem(buttonEl)
 
-    // Функционал отображения и исчезновения окна
-    document.addEventListener('touchstart', (evt) => {
-        const touch = evt.touches[0];
+    // Функция для проверки, является ли клик вне кнопки и есть ли значение в input
+    function handleOutsideClick(evt) {
+        const isOutside = !buttonEl.contains(evt.target);
+        const hasValue = inputEl.value.trim() !== '';
 
-        if (!buttonEl.contains(touch.target) && !inputEl.value) {
+        if (isOutside && hasValue) {
+            // Вызываем submit соответствующей формы
+            if (type === 'column') {
+                submitColumn()
+            } else if (type === 'card') {
+                addCardItemToColumn(data, inputEl)
+            }
+        } else if (isOutside && !hasValue) {
             hideForm(formEl, spanEl);
         }
-    })
+    }
 
-    document.addEventListener('click', (evt) => {
-        if (!buttonEl.contains(evt.target) && !inputEl.value) {
-            hideForm(formEl, spanEl);
-        }
-    })
+    // Добавляем обработчики событий
+    document.addEventListener('touchstart', handleOutsideClick);
+    document.addEventListener('click', handleOutsideClick);
 }
 
 // Событие для отображения и исчезновения формы заполнения (для колонок)
@@ -63,14 +69,13 @@ addColumnButton.addEventListener('click', (evt) => {
         hideForm(columnForm, addColumnButton.querySelector('span'));
     }
     else {
-        showForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'), addColumnButton);
+        showForm(columnForm, addColumnButton.querySelector('span'), addColumnButton.querySelector('input'), addColumnButton, 'column', null);
     }
 });
 
-// Событие по добавлению колонки
-columnForm.addEventListener('submit', (e) => {
-    e.preventDefault();
 
+// функция по добавлению колонки
+function submitColumn() {
     // находим #add_column_value и смотрим у него значение
     let inputValue = columnForm.querySelector('#add_column_value').value;
 
@@ -102,7 +107,14 @@ columnForm.addEventListener('submit', (e) => {
 
     addColumnButton.querySelector('input').value = "";
 
+}
+
+// Событие по добавлению колонки
+columnForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    submitColumn()
 });
+
 
 
 // Элементы для колонок и карточек
@@ -200,7 +212,7 @@ function createColumnFooter(columnItemData) {
             hideForm(columnFooterForm, columnFooterSpan, columnFooterInput);
         }
         else {
-            showForm(columnFooterForm, columnFooterSpan, columnFooterInput, columnFooter);
+            showForm(columnFooterForm, columnFooterSpan, columnFooterInput, columnFooter, 'card', columnItemData);
         }
     })
 
@@ -296,10 +308,10 @@ function addingCard(cardElemId, value, color, description, columnItemData) {
     // при нажатии на карточку появляется окно редактирования
     // Сработает в том случае, если мы нажади именно на тег li, а не на что-то другое (например, кнопка меню)
     cardItem.addEventListener('click', (event) => {
-        if(event.target.tagName == 'LI'){
+        if (event.target.tagName == 'LI') {
             addWindowModal(cardItem, columnItemData)
         }
-    })    
+    })
 
 }
 
