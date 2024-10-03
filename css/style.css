@@ -372,6 +372,11 @@ form .form-options #submit {
   padding: 0.7rem 1.6rem;
   cursor: pointer;
 }
+@media screen and (max-width: 400px) {
+  .modalWindow-container .window .window-content .options button {
+    padding: 0.7rem 0.9rem;
+  }
+}
 .modalWindow-container .window .window-content .options #delete_card {
   border: 1px solid #e72b3d;
   background-color: #dc3545;

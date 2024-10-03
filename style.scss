@@ -464,6 +464,10 @@ form {
                     padding: 0.7rem 1.6rem;
 
                     cursor: pointer;
+
+                    @media screen and (max-width: 400px) {
+                        padding: 0.7rem 0.9rem;
+                    }
                 }
 
                 #delete_card {
