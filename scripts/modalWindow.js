@@ -19,10 +19,6 @@ function addWindowModal(cardItem, columnItemData) {
 
     modalWindowContainer.appendChild(windowElement);
     document.body.appendChild(modalWindowContainer)
-
-    setTimeout(() => {
-        document.querySelector('.modalWindow-container').style.opacity = 1;
-    }, 350)
 }
 
 // добавление header для модалки
@@ -209,6 +205,8 @@ function tinymceInstall(columnItemData, index) {
             // Этот обратный вызов срабатывает после инициализации редактора и устанавливает содержимое, если описание существует.
             setup: function (editor) {
                 editor.on('init', function () {
+                    document.querySelector('.modalWindow-container').style.opacity = 1;
+
                     let cardDesc = columnItemData.cards[index].description;
                     if (cardDesc) {
                         editor.setContent(cardDesc);

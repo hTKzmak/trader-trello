@@ -23,11 +23,17 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     `
 
     colorButton.addEventListener('click', () => {
-        // делаем окно меню невидимым
-        menuWindow.style.opacity = '0'
-        menuWindow.style.pointerEvents = 'none'
+        if(window.innerWidth < 700){
+            colorPicker.style.pointerEvents = 'auto'
+        }
+        else{
+            // делаем окно меню невидимым
+            menuWindow.style.opacity = '0'
+            menuWindow.style.pointerEvents = 'none'
+    
+            colorPicker.style.pointerEvents = 'auto'
+        }
 
-        colorPicker.style.pointerEvents = 'auto'
         
         colorPicker.click()
     })
