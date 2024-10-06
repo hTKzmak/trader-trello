@@ -12,6 +12,7 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
     colorPicker.value = rgbToHex(item.style.backgroundColor)
+    // colorPicker.value = type == 'card' ? rgbToHex(item.style.backgroundColor) : rgbToHex(columnItemData.color) 
     colorPicker.style = `
     position: absolute;
     top: ${window.innerWidth < 700 ? '0' : '-15px'};
@@ -68,11 +69,9 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     const isAppleDevice = /Mac|iPod|iPhone|iPad/.test(navigator.platform);
 
     colorPicker.addEventListener('change', () => {
-        if (isAppleDevice) {
-            alert('Я ненавижу IOS и MacOS')
-            menuWindow.remove();
-        } else {
-            menuWindow.remove();
+        if (!isAppleDevice) {
+            // если отсавить remove, то js будет ругаться, так как remove происходит ещё в menu.js 156
+            // menuWindow.remove();
         }
     });
 
