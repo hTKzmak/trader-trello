@@ -70,7 +70,7 @@ function addColorButton(menuWindow, columnItemData, item, type) {
     colorPicker.addEventListener('change', () => {
         if (!isAppleDevice) {
             // если отсавить remove, то js будет ругаться, так как remove происходит ещё в menu.js 156
-            // menuWindow.remove();
+            menuWindow.remove();
         }
     });
 

@@ -152,7 +152,7 @@ function checkingClickAndTouch(menuWindow, button) {
         const touch = evt.touches[0];
         const targetElement = touch.target;
 
-        if (!menuWindow.contains(targetElement) && !button.contains(targetElement)) {
+        if ((!menuWindow.contains(targetElement) && !button.contains(targetElement)) && menuWindow) {
             menuWindow.remove();
         }
     })
