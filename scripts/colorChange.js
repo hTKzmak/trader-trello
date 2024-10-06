@@ -11,8 +11,7 @@ function addColorButton(menuWindow, columnItemData, item, type) {
 
     const colorPicker = document.createElement('input');
     colorPicker.type = 'color'
-    colorPicker.value = rgbToHex(item.style.backgroundColor)
-    // colorPicker.value = type == 'card' ? rgbToHex(item.style.backgroundColor) : rgbToHex(columnItemData.color) 
+    colorPicker.value = type == 'card' ? rgbToHex(item.style.backgroundColor) : rgbToHex(columnItemData.color) 
     colorPicker.style = `
     position: absolute;
     top: ${window.innerWidth < 700 ? '0' : '-15px'};
